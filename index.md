@@ -1,10 +1,6 @@
 # Akilan Sankaran
 Akilan's homepage.
 
----
-layout: default
----
-
 
 * * *
 
