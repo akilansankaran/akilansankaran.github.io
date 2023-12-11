@@ -5,7 +5,6 @@ Akilan's github homepage.
 layout: default
 ---
 
-[Link to another page](./another-page.html).
 
 * * *
 
