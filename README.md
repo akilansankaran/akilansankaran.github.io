@@ -1,9 +1,9 @@
-# akilansankaran.github.io
-Akilan's github homepage.
-
 ---
 layout: default
 ---
+
+# akilansankaran.github.io
+Akilan's github homepage.
 
 
 * * *
@@ -16,10 +16,5 @@ I am a junior at Albuquerque Academy. My primary interests are mathematics, chem
 
 ## Research Projects
 
-[Link to pdf for paper on the abc-conjecture](./isef_paper_abcs.pdf).
+[Link to pdf of paper on the abc-conjecture](./isef_paper_abcs.pdf).
 
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
-
-### Header 3
