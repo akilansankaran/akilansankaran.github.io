@@ -18,3 +18,6 @@ I am a junior at Albuquerque Academy. My primary interests are mathematics, chem
 
 [Link to pdf of paper on the abc-conjecture](./isef_paper_abcs.pdf).
 
+* * *
+
+
