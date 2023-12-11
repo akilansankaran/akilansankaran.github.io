@@ -1,6 +1,3 @@
-# Akilan Sankaran
-Akilan's homepage.
-
 
 * * *
 
