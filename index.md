@@ -1,5 +1,5 @@
-# akilansankaran.github.io
-Akilan's github homepage.
+# Akilan Sankaran
+Akilan's homepage.
 
 ---
 layout: default
