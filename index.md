@@ -18,3 +18,5 @@ I am a junior at Albuquerque Academy. My primary interests are mathematics, chem
 * * *
 
 I am particularly passionate about computational chemistry and am currently working on materials modeling in the Kozinsky Lab at Harvard.
+
+[Link to paper on walking droplets](./sts_paper_final.pdf)
