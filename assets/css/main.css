@@ -12,6 +12,40 @@ html, body {
 /* Allows us to effectively create the dark theme. first line is background, second line is text color. */
 /* third line gives us the margin/padding characterization, and the eighth gives us the font family. */
 
+/* Header with centered title and top-right contact links */
+.site-header {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 0.5rem;
+}
+
+.site-title {
+  text-align: center;
+  margin: 0;
+  color: #fff;
+}
+
+.contact-links {
+  position: absolute;
+  top: 1.2rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+  font-size: 0.75rem; /* small links */
+}
+
+.contact-links a {
+  color: #fff;
+}
+
+.contact-links a:hover,
+.contact-links a:focus {
+  text-decoration: underline;
+}
+
 main.container {
   max-width: 800px;
   margin: 0 auto;
