@@ -1,14 +1,16 @@
 /* Global dark theme */
 html, body {
   background-color: #000;
-  color: #fff;
+  color: #24cf3e;
   margin: 0;
   padding: 0;
   line-height: 1.6;
-  font-family: Calibri, "Calibri", "Segoe UI", Arial, sans-serif;
+  font-family: Times New Roman, "Times New Roman", "Segoe UI", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+/* Allows us to effectively create the dark theme. first line is background, second line is text color. */
+/* third line gives us the margin/padding characterization, and the eighth gives us the font family. */
 
 main.container {
   max-width: 800px;
@@ -18,8 +20,9 @@ main.container {
 
 h1, h2, h3, h4, h5, h6, p, li {
   color: #fff;
-  font-family: Calibri, "Calibri", "Segoe UI", Arial, sans-serif;
+  font-family: Times New roman, "Times New Roman", "Segoe UI", Arial, sans-serif;
 }
+
 
 a {
   color: #8ab4f8;
