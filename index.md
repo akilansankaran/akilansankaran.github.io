@@ -14,6 +14,6 @@ I am a freshman at [Harvard College](https://harvard.edu). My primary academic i
 
 * * *
 
-I am particularly passionate about computational chemistry and am currently working on materials modeling in the Kozinsky Lab at Harvard.
+I am particularly passionate about computational chemistry and am currently working on materials modeling in the [Kozinsky Lab](https://mir.g.harvard.edu/) at Harvard.
 
 [Link to paper on walking droplets](./sts_paper_final.pdf) 
