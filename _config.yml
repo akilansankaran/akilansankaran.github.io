@@ -9,7 +9,7 @@ kramdown:
   math_engine: mathjax
   syntax_highlighter: rouge
   
-url: https://akilansankaran-ctrl.github.io
+url: https://akilansankaran.github.io
 baseurl: ""
 
 title: [Akilan Sankaran]
