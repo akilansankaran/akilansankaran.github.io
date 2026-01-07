@@ -5,6 +5,7 @@ html, body {
   margin: 0;
   padding: 0;
   line-height: 1.6;
+  font-family: Calibri, "Calibri", "Segoe UI", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -17,6 +18,7 @@ main.container {
 
 h1, h2, h3, h4, h5, h6, p, li {
   color: #fff;
+  font-family: Calibri, "Calibri", "Segoe UI", Arial, sans-serif;
 }
 
 a {
