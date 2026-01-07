@@ -9,5 +9,8 @@ kramdown:
   math_engine: mathjax
   syntax_highlighter: rouge
   
+url: https://akilansankaran.github.io
+baseurl: ""
+
 title: [Akilan Sankaran]
 description: [Harvard University]
