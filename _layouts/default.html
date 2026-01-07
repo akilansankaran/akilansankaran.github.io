@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ page.title | default: site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  </head>
+  <body>
+    <header class="site-header">
+      <h1 class="site-title">Akilan Sankaran</h1>
+      <nav class="contact-links">
+        <a href="mailto:akilansankaran@college.harvard.edu">send a message</a>
+        <a href="https://linkedin.com/in/akilan-sankaran/" target="_blank" rel="noopener noreferrer">view LinkedIn</a>
+      </nav>
+    </header>
+    <main class="container">
+      {{ content }}
+    </main>
+  </body>
+</html>
+
+
+

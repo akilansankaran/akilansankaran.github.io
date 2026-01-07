@@ -1,0 +1,86 @@
+/* Global dark theme */
+html, body {
+  background-color: #000;
+  color: #24cf3e;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  font-family: Times New Roman, "Times New Roman", "Segoe UI", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* Allows us to effectively create the dark theme. first line is background, second line is text color. */
+/* third line gives us the margin/padding characterization, and the eighth gives us the font family. */
+
+/* Header with centered title and top-right contact links */
+.site-header {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 0.5rem;
+}
+
+.site-title {
+  text-align: center;
+  margin: 0;
+  color: #fff;
+}
+
+.contact-links {
+  position: absolute;
+  top: 1.2rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+  font-size: 0.75rem; /* small links */
+}
+
+.contact-links a {
+  color: #fff;
+}
+
+.contact-links a:hover,
+.contact-links a:focus {
+  text-decoration: underline;
+}
+
+main.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+h1, h2, h3, h4, h5, h6, p, li {
+  color: #fff;
+  font-family: Times New roman, "Times New Roman", "Segoe UI", Arial, sans-serif;
+}
+
+
+a {
+  color: #8ab4f8;
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #c58af9;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #333;
+  margin: 2rem 0;
+}
+
+code, pre {
+  background: #111;
+  color: #e6e6e6;
+}
+
+
+
