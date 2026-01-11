@@ -13,36 +13,54 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 /* Allows us to effectively create the dark theme. first line is background, second line is text color. */
-/* third line gives us the margin/padding characterization, and the eighth gives us the font family. */
+/* third line givesc us the margin/padding characterization, and the eighth gives us the font family. */
 
-/* Header with centered title and top-right contact links */
+/* Header with centered title and centered contact links */
 .site-header {
   position: relative;
   max-width: 800px;
   margin: 0 auto;
   padding: 1.5rem 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .site-title {
   text-align: center;
   margin: 0;
-  margin-top: 5rem;
+  margin-top: 2rem;
   font-size: 4rem;
   font-weight: 700;
-  background: linear-gradient(to right, #999999, #ffffff);
+  background: linear-gradient(90deg, #999999 0%, #999999 30%, #4169E1 40%, #4169E1 60%, #ffffff 70%, #ffffff 100%);
+  background-size: 300% 100%;
+  background-position: -100% 0;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: blueGradientMove 10s ease-in-out infinite;
+}
+
+@keyframes blueGradientMove {
+  0% {
+    background-position: -100% 0;
+  }
+  25% {
+    background-position: 200% 0;
+  }
+  26%, 100% {
+    background-position: 200% 0;
+  }
 }
 
 .contact-links {
-  position: absolute;
-  top: 1.2rem;
-  right: 1rem;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
 }
 
 .contact-links a {
