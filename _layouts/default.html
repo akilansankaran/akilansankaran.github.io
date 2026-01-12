@@ -8,22 +8,45 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   </head>
   <body>
     <header class="site-header">
       <h1 class="site-title"><a href="/">Akilan Sankaran</a></h1>
       <nav class="contact-links">
-        <a href="/research">Research</a>
-        <a href="/coursework">Academic Background</a>
+        <a href="/research" class="bold-link">Research</a>
+        <a href="/coursework" class="bold-link">Academic Background</a>
         <a href="/music">Music</a>
         <a href="https://www.youtube.com/channel/UC3BUUIJfTgrYauJq0PTKlng" target="_blank" rel="noopener noreferrer">YouTube</a>
         <a href="mailto:akilansankaran@college.harvard.edu">Email</a>
         <a href="https://linkedin.com/in/akilan-sankaran/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </nav>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark mode">☀️</button>
     </header>
     <main class="container">
       {{ content }}
     </main>
+    <script>
+      // Theme toggle functionality
+      const themeToggle = document.getElementById('theme-toggle');
+      const html = document.documentElement;
+      
+      // Check for saved theme preference or default to dark
+      const currentTheme = localStorage.getItem('theme') || 'dark';
+      html.setAttribute('data-theme', currentTheme);
+      updateThemeIcon(currentTheme);
+      
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+      });
+      
+      function updateThemeIcon(theme) {
+        themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+      }
+    </script>
   </body>
 </html>

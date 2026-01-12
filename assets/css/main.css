@@ -1,19 +1,77 @@
 /* Import Satoshi font - using Inter as similar alternative since Satoshi is premium */
 @import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,700&display=swap');
 
-/* Global dark theme */
+/* CSS Variables for theme */
+:root[data-theme="dark"] {
+  --bg-color: #000;
+  --text-color: #fff;
+  --text-color-secondary: #ccc;
+  --link-color: #8ab4f8;
+  --link-color-visited: #8ab4f8;
+  --contact-link-color: #ADD8E1;
+  --contact-link-border: #ADD8E1;
+  --hr-color: #333;
+  --code-bg: #111;
+  --code-color: #e6e6e6;
+  --title-gradient-start: #999999;
+  --title-gradient-end: #ffffff;
+}
+
+:root[data-theme="light"] {
+  --bg-color: #fff;
+  --text-color: #000;
+  --text-color-secondary: #333;
+  --link-color: #1a73e8;
+  --link-color-visited: #1a73e8;
+  --contact-link-color: #0066cc;
+  --contact-link-border: #0066cc;
+  --hr-color: #ddd;
+  --code-bg: #f5f5f5;
+  --code-color: #333;
+  --title-gradient-start: #333333;
+  --title-gradient-end: #000000;
+}
+
+/* Global theme */
 html, body {
-  background-color: #000;
-  color: #24cf3e;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   margin: 0;
   padding: 0;
   line-height: 1.6;
   font-family: 'Satoshi', 'Inter', Calibri, "Calibri", "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 /* Allows us to effectively create the dark theme. first line is background, second line is text color. */
 /* third line givesc us the margin/padding characterization, and the eighth gives us the font family. */
+
+/* Theme toggle button */
+.theme-toggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: transparent;
+  border: 2px solid var(--contact-link-border);
+  color: var(--contact-link-color);
+  font-size: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.theme-toggle:hover {
+  background-color: rgba(173, 216, 230, 0.1);
+  transform: scale(1.1);
+}
 
 /* Header with centered title and centered contact links */
 .site-header {
@@ -32,7 +90,7 @@ html, body {
   margin-top: 3rem;
   font-size: 6rem;
   font-weight: 700;
-  background: linear-gradient(to right, #999999, #ffffff);
+  background: linear-gradient(to right, var(--title-gradient-start), var(--title-gradient-end));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -40,7 +98,7 @@ html, body {
 
 .site-title a {
   text-decoration: none;
-  background: linear-gradient(to right, #999999, #ffffff);
+  background: linear-gradient(to right, var(--title-gradient-start), var(--title-gradient-end));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -57,18 +115,24 @@ html, body {
 }
 
 .contact-links a {
-  color: #ADD8E6;
+  color: var(--contact-link-color);
   font-size: 0.9rem;
   font-weight: bold;
   padding: 0.35rem 0.7rem;
-  border: 1px solid #ADD8E6;
+  border: 1px solid var(--contact-link-border);
+  border-radius: 0.5rem;
   text-decoration: none;
+}
+
+.contact-links a.bold-link {
+  font-weight: 900;
 }
 
 .contact-links a:hover,
 .contact-links a:focus {
   background-color: rgba(173, 216, 230, 0.1);
   text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
 main.container {
@@ -79,14 +143,16 @@ main.container {
 }
 
 h1, h2, h3, h4, h5, h6, p, li {
-  color: #fff;
+  color: var(--text-color);
   font-family: 'Satoshi', 'Inter', Calibri, "Calibri", "Helvetica Neue", Arial, sans-serif;
+  transition: color 0.3s ease;
 }
 
 
 a {
-  color: #8ab4f8;
+  color: var(--link-color);
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 a:hover, a:focus {
@@ -94,18 +160,20 @@ a:hover, a:focus {
 }
 
 a:visited {
-  color: #c58af9;
+  color: var(--link-color-visited);
 }
 
 hr {
   border: 0;
-  border-top: 1px solid #333;
+  border-top: 1px solid var(--hr-color);
   margin: 2rem 0;
+  transition: border-color 0.3s ease;
 }
 
 code, pre {
-  background: #111;
-  color: #e6e6e6;
+  background: var(--code-bg);
+  color: var(--code-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* specific details for the Feynman quote */
@@ -118,16 +186,23 @@ code, pre {
 }
 
 .quote-text {
-  font-family: 'Great Vibes', 'Dancing Script', cursive; font-size: 2rem; font-style: italic;  color: #fff;  margin: 0; line-height: 1.4;
+  font-family: 'Playfair Display', 'Cormorant Garamond', 'Georgia', serif;
+  font-size: 2rem;
+  font-style: italic;
+  color: var(--text-color);
+  margin: 0;
+  line-height: 1.4;
+  transition: color 0.3s ease;
 }
 
 .quote-author {
-  font-family: 'Great Vibes', 'Dancing Script', cursive;
+  font-family: 'Playfair Display', 'Cormorant Garamond', 'Georgia', serif;
   font-size: 1.5rem;
   font-style: italic;
-  color: #ccc;
+  color: var(--text-color-secondary);
   margin: 1rem 0 0 0;
   line-height: 1.4;
+  transition: color 0.3s ease;
 }
 /* end of Feynman quote */
 
