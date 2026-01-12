@@ -108,5 +108,27 @@ code, pre {
   color: #e6e6e6;
 }
 
+/* specific details for the Feynman quote */
+.feynman-quote {
+  margin: 3rem 0;
+  padding: 2rem 0;
+  text-align: center;
+  border: none;
+  font-style: italic;
+}
+
+.quote-text {
+  font-family: 'Great Vibes', 'Dancing Script', cursive; font-size: 2rem; font-style: italic;  color: #fff;  margin: 0; line-height: 1.4;
+}
+
+.quote-author {
+  font-family: 'Great Vibes', 'Dancing Script', cursive;
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #ccc;
+  margin: 1rem 0 0 0;
+  line-height: 1.4;
+}
+/* end of Feynman quote */
 
 
