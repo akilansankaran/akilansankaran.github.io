@@ -16,7 +16,7 @@ I have conducted within and across the fields of mathematics, quantum and fluid 
     <div class="box-title">Carrier Recombination (Sandia National Labs)</div>
   </a>
   <a href="/hydrodynamics" class="research-box">
-    <div class="box-title">Hydrodynamics (MIT)</div>
+    <div class="box-title">Droplet Hydrodynamics (MIT)</div>
   </a>
 </div>
 

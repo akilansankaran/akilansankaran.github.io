@@ -21,3 +21,5 @@ My two research projects in theoretical mathematics, under supervision of Dr. Da
 </ul>
 
 A compilation of results on the analysis of variants of the abc-conjecture, together with analysis of high-quality triples, can be found [at this link](./isef_paper_abcs.pdf).
+
+I will shortly make available various expository presentations regarding these projects.
