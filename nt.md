@@ -1,0 +1,23 @@
+---
+layout: default
+title: Number Theory
+---
+
+* * *
+
+# Number Theory
+
+[Back to Research](/research)
+
+* * *
+
+My two research projects in theoretical mathematics, under supervision of Dr. David Metzler at [Albuquerque Academy](https://www.aa.edu/), centered on investigation of problems in analytic number theory:
+
+<ul style="list-style-type: square; margin-left: 1.2em;">
+  <li>In 2020, I developed alternatives to Ramanujan's formulation of superior highly composite numbers by proposing divisor functions that incorporated smoothness considerations within weighted tallies of divisors.</li>
+  <li>I developed an analytic formulation for the behavior of the resulting highly divisible numbers, and utilized asymptotic formulas to enumerate such triples via computational algorithms.</li>
+  <li>In 2021, I <a href="./isef_paper_abcs.pdf">investigated the abc-conjecture</a>, a longstanding problem in theoretical mathematics.</li>
+  <li>I proposed quality metrics, analogous to the metric utilized in the original conjecture of Masser and Oesterlé, and formulated tight connections between the behavior of such metrics and the implications of the conjecture itself. Upon improvement of the tightness of such bounds, the conjecture may have a path towards proof via the number-theoretic methodology that I specified.</li>
+</ul>
+
+A compilation of results on the analysis of variants of the abc-conjecture, together with analysis of high-quality triples, can be found [at this link](./isef_paper_abcs.pdf).

@@ -178,6 +178,63 @@ a:visited {
   margin-right: 0.4rem;
 }
 
+/* Research boxes grid layout */
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.research-box {
+  background-color: transparent;
+  border: 2px solid var(--contact-link-border);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s ease;
+  color: var(--text-color);
+}
+
+.research-box:hover {
+  background-color: rgba(173, 216, 230, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.research-box .box-title {
+  color: var(--contact-link-color);
+  font-size: 1.2em;
+  font-weight: 700;
+  margin: 0;
+}
+
+.research-box .box-title em {
+  font-style: italic;
+  color: var(--contact-link-color);
+}
+
+/* For the 2-box row */
+.research-grid.two-columns {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 600px;
+}
+
+@media (max-width: 768px) {
+  .research-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .research-grid.two-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
 hr {
   border: 0;
   border-top: 1px solid var(--hr-color);
