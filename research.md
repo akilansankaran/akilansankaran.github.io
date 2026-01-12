@@ -11,20 +11,20 @@ I have conducted within and across the fields of mathematics, quantum and fluid 
 <div class="research-grid">
   <a href="/mir" class="research-box">
     <div class="box-title">ML for Materials (Harvard)</div>
-  </a> 
-<a href="/recombination" class="research-box">
-    <div class="box-title">Carrier Recombination (Sandia National Labs)</div>
-  </a> 
   </a>
-   <a href="/hydrodynamics" class="research-box">
+  <a href="/recombination" class="research-box">
+    <div class="box-title">Carrier Recombination (Sandia National Labs)</div>
+  </a>
+  <a href="/hydrodynamics" class="research-box">
     <div class="box-title">Hydrodynamics (MIT)</div>
+  </a>
 </div>
 
 <div class="research-grid">
- <a href="/pfas" class="research-box">
+  <a href="/pfas" class="research-box">
     <div class="box-title">PFAS Degradation and Defluorination</div>
- </a>
- <a href="/flylab" class="research-box">
+  </a>
+  <a href="/flylab" class="research-box">
     <div class="box-title">Transgenic <em>Drosophila</em> Lines</div>
   </a>
   <a href="/nt" class="research-box">
