@@ -32,25 +32,10 @@ html, body {
   margin-top: 2rem;
   font-size: 4rem;
   font-weight: 700;
-  background: linear-gradient(90deg, #999999 0%, #999999 30%, #4169E1 40%, #4169E1 60%, #ffffff 70%, #ffffff 100%);
-  background-size: 300% 100%;
-  background-position: -100% 0;
+  background: linear-gradient(to right, #999999, #ffffff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: blueGradientMove 10s ease-in-out infinite;
-}
-
-@keyframes blueGradientMove {
-  0% {
-    background-position: -100% 0;
-  }
-  25% {
-    background-position: 200% 0;
-  }
-  26%, 100% {
-    background-position: 200% 0;
-  }
 }
 
 .contact-links {
@@ -58,7 +43,7 @@ html, body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 0.8rem;
+  gap: 1.2rem;
   flex-wrap: wrap;
   margin-bottom: 1rem;
 }
