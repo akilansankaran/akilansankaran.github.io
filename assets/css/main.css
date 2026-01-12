@@ -29,9 +29,17 @@ html, body {
 .site-title {
   text-align: center;
   margin: 0;
-  margin-top: 2rem;
-  font-size: 4rem;
+  margin-top: 3rem;
+  font-size: 6rem;
   font-weight: 700;
+  background: linear-gradient(to right, #999999, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.site-title a {
+  text-decoration: none;
   background: linear-gradient(to right, #999999, #ffffff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
