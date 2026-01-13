@@ -91,7 +91,7 @@ html, body {
   font-size: 6rem;
   font-weight: 700;
   position: relative;
-  padding-bottom: 2rem;
+  padding-bottom: 4rem;
 }
 
 .site-title a {
@@ -102,6 +102,22 @@ html, body {
   background-clip: text;
   position: relative;
   display: inline-block;
+}
+
+.site-title a::after {
+  content: "Akilan Sankaran";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(0.5rem);
+  background: linear-gradient(to right, var(--title-gradient-start), var(--title-gradient-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0.35;
+  filter: blur(3px);
+  pointer-events: none;
+  white-space: nowrap;
 }
 
 .site-title a::after {
