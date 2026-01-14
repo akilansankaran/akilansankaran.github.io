@@ -107,9 +107,9 @@ html, body {
 .site-title a::after {
   content: "Akilan Sankaran";
   position: absolute;
-  top: 100%;
+  top: calc(100% + 1rem);
   left: 50%;
-  transform: translateX(-50%) translateY(0.5rem);
+  transform: translateX(-50%);
   background: linear-gradient(to right, var(--title-gradient-start), var(--title-gradient-end));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -118,6 +118,7 @@ html, body {
   filter: blur(3px);
   pointer-events: none;
   white-space: nowrap;
+  line-height: 1;
 }
 
 .site-title a::after {
