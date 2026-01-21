@@ -15,6 +15,8 @@
   --code-color: #e6e6e6;
   --title-gradient-start: #999999;
   --title-gradient-end: #ffffff;
+  --box-bg: #0a1628;
+  --box-border: #1e3a5f;
 }
 
 :root[data-theme="light"] {
@@ -30,6 +32,8 @@
   --code-color: #333;
   --title-gradient-start: #333333;
   --title-gradient-end: #000000;
+  --box-bg: #e8f1ff;
+  --box-border: #b3d9ff;
 }
 
 /* Global theme */
@@ -231,6 +235,21 @@ a:visited {
   margin-right: 0.4rem;
 }
 
+/* Unified text box theme */
+.text-box {
+  background-color: var(--box-bg);
+  border: 1.5px solid var(--box-border);
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+  transition: all 0.3s ease;
+}
+
+.text-box:hover {
+  border-color: var(--contact-link-border);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
 /* Research boxes grid layout */
 .research-grid {
   display: grid;
@@ -243,8 +262,8 @@ a:visited {
 }
 
 .research-box {
-  background-color: transparent;
-  border: 2px solid var(--contact-link-border);
+  background-color: var(--box-bg);
+  border: 1.5px solid var(--box-border);
   border-radius: 0.75rem;
   padding: 1.5rem;
   text-align: center;
@@ -255,9 +274,10 @@ a:visited {
 }
 
 .research-box:hover {
-  background-color: rgba(173, 216, 230, 0.1);
+  border-color: var(--contact-link-border);
+  background-color: var(--box-bg);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .research-box .box-title {
@@ -278,12 +298,58 @@ a:visited {
   max-width: 600px;
 }
 
+/* 6-box thematic grid */
+.thematic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.thematic-box {
+  background-color: var(--box-bg);
+  border: 1.5px solid var(--box-border);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s ease;
+  color: var(--text-color);
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.thematic-box:hover {
+  border-color: var(--contact-link-border);
+  background-color: var(--box-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.thematic-box-title {
+  color: var(--contact-link-color);
+  font-size: 1.1em;
+  font-weight: 700;
+  margin: 0;
+}
+
 @media (max-width: 768px) {
   .research-grid {
     grid-template-columns: 1fr;
   }
   
   .research-grid.two-columns {
+    grid-template-columns: 1fr;
+  }
+  
+  .thematic-grid {
     grid-template-columns: 1fr;
   }
 }

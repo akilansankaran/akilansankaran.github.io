@@ -12,6 +12,27 @@ I am also broadly interested in economics, international relations, and politica
 
 I enjoy interdisciplinary research and look forward to many more potential research opportunities across multiscale computational sciences throughout my career. I am particularly excited to explore the intersection of computation with the applied sciences.
 
+<div class="thematic-grid">
+  <div class="thematic-box">
+    <div class="thematic-box-title">🔬 Research</div>
+  </div>
+  <div class="thematic-box">
+    <div class="thematic-box-title">🎓 Academic</div>
+  </div>
+  <div class="thematic-box">
+    <div class="thematic-box-title">🎹 Music</div>
+  </div>
+  <div class="thematic-box">
+    <div class="thematic-box-title">💻 Computation</div>
+  </div>
+  <div class="thematic-box">
+    <div class="thematic-box-title">🌍 Economics</div>
+  </div>
+  <div class="thematic-box">
+    <div class="thematic-box-title">🏃 Athletics</div>
+  </div>
+</div>
+
 <blockquote class="feynman-quote">
   <p class="quote-text">"I would rather have questions that can be answered than answers that can't be questioned"</p>
   <p class="quote-author">– Richard Feynman</p>
