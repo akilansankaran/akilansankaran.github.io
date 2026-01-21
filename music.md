@@ -84,7 +84,7 @@ I am incredibly passionate about performing and disseminating Classical music, a
             <li>Étude in E Major, Op. 10 No. 3</li>
             <li>Étude in C-sharp Minor, Op. 10 No. 4</li>
             <li>Étude in C Minor, Op. 10 No. 12 </li>
-            <li>Étude in C-sharp Minor, Op. 25 No. 7<li>
+            <li>Étude in C-sharp Minor, Op. 25 No. 7</li>
             <li>Nocturnes in B-flat Minor (Op. 9, No. 1), E-flat Major (Op. 9, No. 2), B Major (Op. 9, No. 3), C-sharp Minor (Op. 27, No. 1), D-flat Major (Op. 27, No. 2), C Minor (Op. 48, No. 1), F-sharp Minor (Op. 48, No. 2), and E Minor (Op. 72, No. 1)</li>
             <li>Préludes: Op. 28, No. 15 (D-flat Major)</li>
             </ul>
@@ -98,12 +98,12 @@ I am incredibly passionate about performing and disseminating Classical music, a
             </ul>
         </li>
         <li>Franz Liszt
-        <ul>
-        <li>Sonata in B Minor, S. 178 (in progress)</li>
-        <li>Transcendental Études: No. 10 in F Minor "Appassionata"</li>
-        <li>*Grandes études de Paganini, S. 141*: No. 3, *La Campanella*.</li>
-        <li>Hungarian Rhapsody No. 2 in C-sharp minor, S.244/2</li>
-        </ul>
+          <ul>
+            <li>Sonata in B Minor, S. 178 (in progress)</li>
+            <li>Transcendental Études: No. 10 in F Minor "Appassionata"</li>
+            <li>*Grandes études de Paganini, S. 141*: No. 3, *La Campanella*.</li>
+            <li>Hungarian Rhapsody No. 2 in C-sharp minor, S.244/2</li>
+          </ul>
         </li>
       </ul>
     </div>
