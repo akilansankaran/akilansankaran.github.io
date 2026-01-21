@@ -7,7 +7,7 @@ title: Music
 # Music
 
 <div class="content-container" markdown="1">
-I am incredibly passionate about Classical music. A selected list of my recent pianistic repertoire is indicated below.
+I am incredibly passionate about performing and disseminating Classical music. A selected list of my recent pianistic repertoire is indicated below.
 </div>
 
 <div class="content-container">
@@ -59,11 +59,12 @@ I am incredibly passionate about Classical music. A selected list of my recent p
        <ul>
             <li>Sonata in E-flat Major, Hob XVI:52</li>
             <li>Sonata in C Major, Hob XIV:50</li>
-          </ul>  
+          </ul>
+        </li>
         <li>L.C. Daquin
-        <ul>
-        <li>Le Coucou<li>
-        </ul>
+          <ul>
+            <li>Le Coucou</li>
+          </ul>
         </li>
       </ul>
     </div>
