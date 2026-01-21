@@ -11,6 +11,7 @@ title: Number Theory
 
 * * *
 
+<div class="text-box">
 My two research projects in theoretical mathematics, under supervision of Dr. David Metzler at [Albuquerque Academy](https://www.aa.edu/), centered on investigation of problems in analytic number theory:
 
 <ul style="list-style-type: square; margin-left: 1.2em;">
@@ -23,4 +24,5 @@ My two research projects in theoretical mathematics, under supervision of Dr. Da
 
 A compilation of results on the analysis of variants of the abc-conjecture, together with analysis of high-quality triples, can be found [at this link](./isef_paper_abcs.pdf).
 
-I will shortly make available various expository presentations regarding these projects. 
+I will shortly make available various expository presentations regarding these projects.
+</div> 

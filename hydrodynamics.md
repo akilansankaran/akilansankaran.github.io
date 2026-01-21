@@ -10,6 +10,7 @@ title: Hydrodynamics at MIT
 [Back to Research](/research)
 
 * * *
+<div class="text-box">
 In 2024, while at the <a href="https://www.cee.org/programs/research-science-institute">Research Science Institute</a>, I investigated hydrodynamics at <a href="https://thales.mit.edu/bush/">MIT's Applied Mathematics Laboratory</a> under the direction of Diego Israel Chavez and Prof. John Bush. As a brief summary of my research in the lab:
 <ul style="list-style-type: square; margin-left: 1.2em;">
   <li>I studied the dynamics of a walking silicone oil droplet on variable-topography systems from experimental, theoretical, and computational standpoints. From the experimental perspective, I demonstrated bidirectional tunneling in a novel cavity-geometry and elucidated that droplet coupling accelerates the tunneling process across subsurface physical barriers.</li>
@@ -19,3 +20,4 @@ In 2024, while at the <a href="https://www.cee.org/programs/research-science-ins
 </ul>
 
 Here is a [preprint](./sts_paper_final.pdf) of my droplet dynamics work, soon to be submitted for publication in the *Journal of Fluid Mechanics.
+</div>
