@@ -106,15 +106,17 @@ I am incredibly passionate about performing and disseminating Classical music, a
           </ul>
         </li>
        <li>Franz Schubert
-        <ul>
-        <li>Impromptu: No. 2 and No. 4 in E-flat Major and A-flat Major (Op. 90, No. 2 and No. 4)</li>
-        <li>Piano Sonata in B-flat Major, D. 960 (in progress)</li>
-        <li>Ständchen, D. 957/4</li>
-       </li>
+          <ul>
+            <li>Impromptu: No. 2 and No. 4 in E-flat Major and A-flat Major (Op. 90, No. 2 and No. 4)</li>
+            <li>Piano Sonata in B-flat Major, D. 960 (in progress)</li>
+            <li>Ständchen, D. 957/4</li>
+          </ul>
+        </li>
        <li>Felix Mendelssohn
-        <ul>
-        <li>Lieder ohne Worte, Op. 67 No. 4</li>
-       </li>
+          <ul>
+            <li>Lieder ohne Worte, Op. 67 No. 4</li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
@@ -135,14 +137,14 @@ I am incredibly passionate about performing and disseminating Classical music, a
           </ul>
         </li>
         <li>Aaron Copland
-        <ul>
-        <li>“The Cat and the Mouse"
-        </ul>
+          <ul>
+            <li>"The Cat and the Mouse"</li>
+          </ul>
         </li>
         <li>Saint-Saëns, Liszt
-        <ul>
-        <li>Danse macabre, Op. 40 (piano transcription)
-        </ul>
+          <ul>
+            <li>Danse macabre, Op. 40 (piano transcription)</li>
+          </ul>
         </li>
       </ul>
     </div>
