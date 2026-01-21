@@ -5,13 +5,17 @@ title: Transgenic Drosophila Line Generation
 
 * * *
 
+<div class="text-box">
 # Transgenic *Drosophila* Line Generation
+</div>
 
+<div class="text-box" markdown="1">
 [Back to Research](/research)
+</div>
 
 * * *
 
-<div class="text-box">
+<div class="text-box" markdown="1">
 While involved with the Fly Lab at Albuquerque Academy, I participated in a multi-institutional collaboration, led by researchers at Stanford, in generating suitable drivers for *Drosophila* fly lines.
 <ul style="list-style-type: square; margin-left: 1.2em;">
     <li> I utilized CRISPR-mediated Homology Directed Repair (HDR) mechanisms to a specific binary expression cassette into the fly genome, converting driver lines with Gal4-promoters into driver lines containing LexA-promoters.</li>

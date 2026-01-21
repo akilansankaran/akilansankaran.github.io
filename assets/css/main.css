@@ -91,7 +91,7 @@ html, body {
 .site-title {
   text-align: center;
   margin: 0;
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   font-size: 6rem;
   font-weight: 700;
   position: relative;
@@ -148,7 +148,7 @@ html, body {
   border: 1.5px solid var(--box-border);
   border-radius: 0.75rem;
   padding: 1rem 1.5rem;
-  margin: 1rem 0 2rem 0;
+  margin: 2rem 0 0.5rem 0;
   transition: all 0.3s ease;
 }
 
@@ -257,6 +257,31 @@ a:visited {
 .text-box:hover {
   border-color: var(--contact-link-border);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.text-box h1,
+.text-box h2,
+.text-box h3,
+.text-box h4,
+.text-box h5,
+.text-box h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.text-box a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.text-box a:hover,
+.text-box a:focus {
+  text-decoration: underline;
+}
+
+.text-box a:visited {
+  color: var(--link-color-visited);
 }
 
 /* Research boxes grid layout */
