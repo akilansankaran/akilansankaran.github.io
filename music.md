@@ -105,15 +105,45 @@ I am incredibly passionate about performing and disseminating Classical music, a
             <li>Hungarian Rhapsody No. 2 in C-sharp minor, S.244/2</li>
           </ul>
         </li>
+       <li>Franz Schubert
+        <ul>
+        <li>Impromptu: No. 2 and No. 4 in E-flat Major and A-flat Major (Op. 90, No. 2 and No. 4)</li>
+        <li>Piano Sonata in B-flat Major, D. 960 (in progress)</li>
+        <li>Ständchen, D. 957/4</li>
+       </li>
+       <li>Felix Mendelssohn
+        <ul>
+        <li>Lieder ohne Worte, Op. 67 No. 4</li>
+       </li>
       </ul>
     </div>
   </div>
 
   <div class="repertoire-box" onclick="toggleRepertoire(this)">
-    <div class="repertoire-header">Contemporary Repertoire</div>
+    <div class="repertoire-header">Contemporary and Impressionistic Repertoire</div>
     <div class="repertoire-content">
       <ul>
-        <li>Coming soon!</li>
+        <li>Claude Debussy
+          <ul>
+            <li>Images Suite, I., L. 110</li>
+          </ul>
+        </li>
+        <li>Maurice Ravel
+          <ul>
+            <li>Jeux d'eau</li>
+            <li>La valse (in progress), Op. 72b</li>
+          </ul>
+        </li>
+        <li>Aaron Copland
+        <ul>
+        <li>“The Cat and the Mouse"
+        </ul>
+        </li>
+        <li>Saint-Saëns, Liszt
+        <ul>
+        <li>Danse macabre, Op. 40 (piano transcription)
+        </ul>
+        </li>
       </ul>
     </div>
   </div>
