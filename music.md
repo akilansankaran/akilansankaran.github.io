@@ -7,7 +7,7 @@ title: Music
 # Music
 
 <div class="content-container" markdown="1">
-I am incredibly passionate about performing and disseminating Classical music. A selected list of my recent pianistic repertoire is indicated below.
+I am incredibly passionate about performing and disseminating Classical music, and I specialize in performance of Romantic-era repertoire. A selected list of my recent pianistic repertoire is indicated below.
 </div>
 
 <div class="content-container">
@@ -74,9 +74,37 @@ I am incredibly passionate about performing and disseminating Classical music. A
     <div class="repertoire-header">Romantic Repertoire</div>
     <div class="repertoire-content">
       <ul>
-        <li>Mazurka TEST</li>
-        <li>Mazurka TEST</li>
-        <li>Mazurka TEST</li>
+        <li>Frédéric Chopin
+            <ul>
+            <li>Ballade No. 3 in A-flat Major, Op. 47</li>
+            <li>Ballade No. 4 in F Minor, Op. 52</li>
+            <li>Scherzo No. 2 in B-flat Minor, Op. 31</li>
+            <li>Polonaise-Fantaisie in A-flat Major, Op. 61</li>
+            <li>Étude in C Major, Op. 10 No. 1</li>
+            <li>Étude in E Major, Op. 10 No. 3</li>
+            <li>Étude in C-sharp Minor, Op. 10 No. 4</li>
+            <li>Étude in C Minor, Op. 10 No. 12 </li>
+            <li>Étude in C-sharp Minor, Op. 25 No. 7<li>
+            <li>Nocturnes in B-flat Minor (Op. 9, No. 1), E-flat Major (Op. 9, No. 2), B Major (Op. 9, No. 3), C-sharp Minor (Op. 27, No. 1), D-flat Major (Op. 27, No. 2), C Minor (Op. 48, No. 1), F-sharp Minor (Op. 48, No. 2), and E Minor (Op. 72, No. 1)</li>
+            <li>Préludes: Op. 28, No. 15 (D-flat Major)</li>
+            </ul>
+        </li>
+        <li>Sergei Rachmaninoff
+            <ul>
+            <li>Concerto No. 2, Op. 18 (performed with New Mexico Philharmonic)</li>
+            <li>Études in G Minor (Op. 33, No. 4), E-flat Minor (Op. 39, No. 5), and D Minor (Op. 39, No. 8)</li>
+            <li>Préludes in D Major (Op. 23, No. 4) and G-sharp Minor (Op. 32, No. 12) </li>
+            <li>Barcarolle, Op. 10 No. 3</li>
+            </ul>
+        </li>
+        <li>Franz Liszt
+        <ul>
+        <li>Sonata in B Minor, S. 178 (in progress)</li>
+        <li>Transcendental Études: No. 10 in F Minor "Appassionata"</li>
+        <li>*Grandes études de Paganini, S. 141*: No. 3, *La Campanella*.</li>
+        <li>Hungarian Rhapsody No. 2 in C-sharp minor, S.244/2</li>
+        </ul>
+        </li>
       </ul>
     </div>
   </div>
@@ -85,9 +113,7 @@ I am incredibly passionate about performing and disseminating Classical music. A
     <div class="repertoire-header">Contemporary Repertoire</div>
     <div class="repertoire-content">
       <ul>
-        <li>Mazurka TEST</li>
-        <li>Mazurka TEST</li>
-        <li>Mazurka TEST</li>
+        <li>Coming soon!</li>
       </ul>
     </div>
   </div>
