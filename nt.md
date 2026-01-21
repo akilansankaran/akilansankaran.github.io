@@ -5,16 +5,12 @@ title: Number Theory
 
 * * *
 
-<div class="content-container">
-  <div class="text-box">
-    # Number Theory
-  </div>
+# Number Theory
 
+<div class="content-container">
   <div class="text-box" markdown="1">
   [Back to Research](/research)
-  </div>
-
-  <div class="text-box" markdown="1">
+  
   My two research projects in theoretical mathematics, under supervision of Dr. David Metzler at [Albuquerque Academy](https://www.aa.edu/), centered on investigation of problems in analytic number theory:
 
   <ul style="list-style-type: square; margin-left: 1.2em;">

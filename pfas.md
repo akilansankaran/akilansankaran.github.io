@@ -5,16 +5,12 @@ title: PFAS Research
 
 * * *
 
-<div class="content-container">
-  <div class="text-box">
-    # PFAS Research
-  </div>
+# PFAS Research
 
+<div class="content-container">
   <div class="text-box" markdown="1">
   [Back to Research](/research)
-  </div>
-
-  <div class="text-box" markdown="1">
+  
   In 2024, in a semi-independent research project (with guidance from Dr. Normand Modine and utilization of resources from [Sandia National Laboratories](https://sandia.gov)), I investigated the degradation of per- and poly-fluoroalkyl substances through electronic structure and molecular dynamics simulations.
   <ul style="list-style-type: square; margin-left: 1.2em;">
       <li>I utilized molecular dynamics simulations with classical force-fields, aided by the [LAMMPS simulator](https://www.lammps.org/#gsc.tab=0), to engage in structural relaxation and equilibration for perfluorooctanoate (PFOA) and perfluorosulfonic acid (PFOS), validating diffusion coefficients and various other observables against experimental data to within first-order.</li>

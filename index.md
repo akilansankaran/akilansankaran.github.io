@@ -4,11 +4,9 @@ title: Home
 ---
 * * *
 
-<div class="content-container">
-  <div class="text-box">
-    # About Me
-  </div>
+# About Me
 
+<div class="content-container">
   <div class="text-box" markdown="1">
   I am a freshman at [Harvard College](https://harvard.edu). My primary [research interests](./research.md) involve pure and applied mathematics, materials modeling and simulation, quantum chemistry, computer science, and biochemistry. 
   </div>
