@@ -196,6 +196,27 @@ h1, h2, h3, h4, h5, h6, p, li {
   transition: color 0.3s ease;
 }
 
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
 sub, sup {
   font-size: 0.75em;
   line-height: 0;
@@ -244,14 +265,37 @@ a:visited {
   margin-right: 0.4rem;
 }
 
-/* Unified text box theme */
+/* Content container - outer box wrapping all content */
+.content-container {
+  background-color: var(--box-bg);
+  border: 1.5px solid var(--box-border);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  transition: all 0.3s ease;
+}
+
+.content-container:hover {
+  border-color: var(--contact-link-border);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Unified text box theme - inner boxes */
 .text-box {
   background-color: var(--box-bg);
   border: 1.5px solid var(--box-border);
   border-radius: 0.5rem;
   padding: 1rem 1.25rem;
-  margin: 1rem 0;
+  margin: 0.75rem 0;
   transition: all 0.3s ease;
+}
+
+.content-container > .text-box:first-child {
+  margin-top: 0;
+}
+
+.content-container > .text-box:last-child {
+  margin-bottom: 0;
 }
 
 .text-box:hover {
@@ -267,6 +311,19 @@ a:visited {
 .text-box h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.text-box h1 {
+  font-size: 2.5rem;
+}
+
+.text-box h2 {
+  font-size: 2rem;
+}
+
+.text-box h3 {
+  font-size: 1.75rem;
 }
 
 .text-box a {
@@ -282,6 +339,66 @@ a:visited {
 
 .text-box a:visited {
   color: var(--link-color-visited);
+}
+
+/* Expandable repertoire boxes */
+.repertoire-box {
+  background-color: var(--box-bg);
+  border: 1.5px solid var(--box-border);
+  border-radius: 0.5rem;
+  padding: 0;
+  margin: 0.75rem 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.repertoire-box:hover {
+  border-color: var(--contact-link-border);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.repertoire-header {
+  padding: 1rem 1.25rem;
+  font-weight: 700;
+  color: var(--contact-link-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+
+.repertoire-header::after {
+  content: '+';
+  font-size: 1.5rem;
+  font-weight: 300;
+  transition: transform 0.3s ease;
+}
+
+.repertoire-box.expanded .repertoire-header::after {
+  content: '−';
+  transform: rotate(0deg);
+}
+
+.repertoire-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding: 0 1.25rem;
+}
+
+.repertoire-box.expanded .repertoire-content {
+  max-height: 500px;
+  padding: 0 1.25rem 1rem 1.25rem;
+}
+
+.repertoire-content ul {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.repertoire-content li {
+  margin: 0.25rem 0;
+  color: var(--text-color);
 }
 
 /* Research boxes grid layout */
