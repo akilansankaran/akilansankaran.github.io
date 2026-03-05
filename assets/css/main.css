@@ -95,7 +95,8 @@ html, body {
   font-size: 3.5rem;
   font-weight: 700;
   position: relative;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .site-title a {
@@ -114,9 +115,12 @@ html, body {
 }
 
 .site-subtitle {
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 400;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  line-height: 1.2;
   background: linear-gradient(to right, var(--title-gradient-start), var(--title-gradient-end));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
