@@ -306,35 +306,164 @@ code, pre {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== Hero Triangle Animation ===== */
+/* ===== Hero Constellation ===== */
 .hero-anim {
   margin-bottom: 2.5rem;
   opacity: 0;
   animation: heroFadeUp 0.5s ease 0s forwards;
 }
 
-.ha-line {
-  stroke: var(--text-muted);
+.c-svg {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  overflow: visible;
+  display: block;
+}
+
+/* Outer hexagon frame */
+.c-ring-line {
+  stroke: var(--border);
   stroke-width: 1;
-  opacity: 0.18;
+  opacity: 0.22;
   transition: stroke 0.3s;
 }
 
-.ha-c {
+/* Animated dashed spokes */
+.c-spoke {
+  stroke: var(--border);
+  stroke-width: 1;
+  stroke-dasharray: 3 5;
+  animation: cSpokeDash 2.8s linear infinite;
+  opacity: 0.38;
+  transition: stroke 0.3s;
+}
+
+@keyframes cSpokeDash {
+  from { stroke-dashoffset: 8; }
+  to   { stroke-dashoffset: 0; }
+}
+
+/* Center dot */
+.c-center {
   fill: var(--text-muted);
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: haPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  opacity: 0.2;
   transition: fill 0.3s;
 }
 
-.ha-c2 { animation-delay: 0.8s; }
-.ha-c3 { animation-delay: 1.6s; }
+/* Each node is an SVG <a> — color cascades to all children via currentColor */
+.c-node {
+  color: var(--text-muted);
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  transition: color 0.2s;
+}
 
-@keyframes haPulse {
-  0%, 100% { transform: scale(1);    opacity: 0.5; }
-  28%       { transform: scale(0.1); opacity: 0.04; }
-  56%       { transform: scale(1);   opacity: 0.5; }
+.c-node:hover,
+.c-node:focus {
+  color: var(--text);
+}
+
+/* Node background disc */
+.c-node-bg {
+  fill: var(--bg-card);
+  stroke: var(--border);
+  stroke-width: 1.5;
+  transition: stroke 0.2s, stroke-width 0.2s;
+}
+
+.c-node:hover .c-node-bg,
+.c-node:focus .c-node-bg {
+  stroke: var(--text-muted);
+  stroke-width: 2;
+}
+
+/* Ripple ring — expands outward from node center */
+.c-ripple {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.8;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: cRipple 3s ease-out infinite;
+}
+
+@keyframes cRipple {
+  0%   { transform: scale(1);   opacity: 0.32; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+
+/* Icon primitives — inherit color from .c-node */
+.c-icon-path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.c-icon-dot  { fill: currentColor; }
+
+.c-icon-bond {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  stroke-linecap: round;
+}
+
+.c-icon-drop { fill: currentColor; }
+
+text.c-icon {
+  fill: currentColor;
+  font-size: 12px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  text-anchor: middle;
+  dominant-baseline: central;
+  pointer-events: none;
+}
+
+/* Hover labels */
+.c-label {
+  font-size: 8.5px;
+  fill: var(--text-muted);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.18s;
+  pointer-events: none;
+  letter-spacing: 0.03em;
+}
+
+.c-node:hover .c-label,
+.c-node:focus .c-label {
+  opacity: 1;
+}
+
+/* ===== Get In Touch ===== */
+.get-in-touch {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.git-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 0.5rem;
+  transition: color 0.3s;
+}
+
+.git-email {
+  font-size: 0.875rem;
+  color: var(--text);
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  margin: 0;
+  transition: color 0.3s;
 }
 
 /* ===== Course Grid (Background page) ===== */
