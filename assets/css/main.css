@@ -306,6 +306,107 @@ code, pre {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ===== Hero Triangle Animation ===== */
+.hero-anim {
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: heroFadeUp 0.5s ease 0s forwards;
+}
+
+.ha-line {
+  stroke: var(--text-muted);
+  stroke-width: 1;
+  opacity: 0.18;
+  transition: stroke 0.3s;
+}
+
+.ha-c {
+  fill: var(--text-muted);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: haPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  transition: fill 0.3s;
+}
+
+.ha-c2 { animation-delay: 0.8s; }
+.ha-c3 { animation-delay: 1.6s; }
+
+@keyframes haPulse {
+  0%, 100% { transform: scale(1);    opacity: 0.5; }
+  28%       { transform: scale(0.1); opacity: 0.04; }
+  56%       { transform: scale(1);   opacity: 0.5; }
+}
+
+/* ===== Course Grid (Background page) ===== */
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.875rem;
+  margin: 1.25rem 0;
+}
+
+.course-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.course-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-hover);
+}
+
+.course-subject {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 0.75rem;
+}
+
+.course-note {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin: -0.375rem 0 0.75rem;
+  font-style: italic;
+}
+
+.course-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.5rem;
+}
+
+.course-list li {
+  font-size: 0.8rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.175rem 0.5rem;
+  line-height: 1.5;
+  transition: color 0.3s, background 0.3s, border-color 0.3s;
+}
+
+.page-subtitle {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  margin: 0 0 1.75rem;
+}
+
+@media (max-width: 768px) {
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ===== Buttons ===== */
 .btn-primary {
   display: inline-flex;
