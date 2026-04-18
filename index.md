@@ -189,7 +189,7 @@ title: Home
     return [CX, CY - hh];
   }
 
-  /* ── Shape sequence ───────────────────────────────────────────────────── */
+  /* ──────────────── */
   var SHAPES = [
     function (t) { return regPolyPoint(6, t); },   /* hexagon   */
     function (t) { return circlePoint(t);     },   /* circle    */
