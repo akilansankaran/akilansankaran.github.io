@@ -308,25 +308,27 @@ code, pre {
 
 /* ===== Hero Constellation ===== */
 .hero-anim {
-  margin-bottom: 2.5rem;
+  margin: 2rem 0 2.5rem;
+  display: flex;
+  justify-content: center;
   opacity: 0;
   animation: heroFadeUp 0.5s ease 0s forwards;
 }
 
 .c-svg {
   width: 100%;
-  max-width: 400px;
+  max-width: 440px;
   height: auto;
   overflow: visible;
   display: block;
 }
 
-/* Outer hexagon frame — more visible */
+/* Outer hexagon frame */
 .c-ring-line {
-  stroke: var(--text-muted);
-  stroke-width: 1.5;
-  opacity: 0.45;
-  transition: stroke 0.3s;
+  stroke: var(--text);
+  stroke-width: 1.8;
+  opacity: 0.6;
+  transition: stroke 0.3s, opacity 0.3s;
 }
 
 /* Animated dashed spokes */
@@ -377,17 +379,6 @@ code, pre {
 .c-node:focus .c-node-bg {
   stroke: var(--text-muted);
   stroke-width: 2;
-}
-
-/* Slow orbital rotation of the whole constellation */
-.c-constellation {
-  transform-origin: 200px 160px;
-  animation: constellationSpin 80s linear infinite;
-}
-
-@keyframes constellationSpin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
 }
 
 /* Materials hexagon spins on its own axis */
@@ -468,9 +459,9 @@ text.c-icon {
 
 /* ===== Get In Touch ===== */
 .get-in-touch {
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border);
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
 }
 
 .git-label {
