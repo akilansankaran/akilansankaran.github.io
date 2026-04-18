@@ -15,8 +15,8 @@ title: Home
     </svg>
   </div>
   <h1 class="hero-name">Akilan Sankaran</h1>
-  <p class="hero-tagline">Harvard</p>
-  <p class="hero-bio">Freshman at Harvard College. I work on machine-learned exchange-correlation functionals and neural-network potentials at the <a href="https://mir.g.harvard.edu/">Kozinsky Lab</a>. Broadly interested in the intersection of computation with the applied sciences — spanning materials, chemistry, physics, and biology. I'm also pursuing economics and political philosophy through <a href="https://www.charlesrivereconomicslabs.org/">Charles River Economics Labs</a> and Harvard's <a href="https://iop.harvard.edu/">Institute of Politics</a>. Outside the lab, I play piano and run long-distance.</p>
+  <p class="hero-tagline">Harvard </p>
+  <p class="hero-bio">Broadly interested in the intersection of computation and theory with the applied sciences, spanning materials, chemistry, physics, and biology. I work on machine-learned exchange-correlation functionals and neural-network potentials at the <a href="https://mir.g.harvard.edu/">Kozinsky Lab</a>.  I'm also pursuing economics and political philosophy through <a href="https://www.charlesrivereconomicslabs.org/">Charles River Economics Labs</a> and Harvard's <a href="https://iop.harvard.edu/">Institute of Politics</a>. Outside the lab, I <a href = "https://www.youtube.com/channel/UC3BUUIJfTgrYauJq0PTKlng">perform piano</a> and run long-distance.</p>
   <div class="hero-links">
     <a href="/research" class="btn-primary">Research</a>
     <a href="/coursework" class="btn-secondary">Background</a>
