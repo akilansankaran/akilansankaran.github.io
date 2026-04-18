@@ -381,6 +381,14 @@ code, pre {
   stroke-width: 2;
 }
 
+/* Radial tiling lines: thin, faint, deform with shape */
+.c-ray {
+  stroke: var(--text);
+  stroke-width: 0.6;
+  opacity: 0.15;
+  transition: stroke 0.3s;
+}
+
 /* Morphing shape outline polygon */
 .c-ring-poly {
   fill: none;

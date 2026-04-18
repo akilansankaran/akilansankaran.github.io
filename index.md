@@ -17,6 +17,26 @@ title: Home
   <div class="hero-anim">
     <svg viewBox="0 0 400 320" class="c-svg" xmlns="http://www.w3.org/2000/svg" aria-label="Research topics">
 
+      <!-- Radial tiling lines: fixed arc-length positions, deform with shape but don't orbit -->
+      <line id="morph-ray-0"  class="c-ray" x1="200" y1="160" x2="200" y2="45"/>
+      <line id="morph-ray-1"  class="c-ray" x1="200" y1="160" x2="200" y2="45"/>
+      <line id="morph-ray-2"  class="c-ray" x1="200" y1="160" x2="200" y2="45"/>
+      <line id="morph-ray-3"  class="c-ray" x1="200" y1="160" x2="200" y2="45"/>
+      <line id="morph-ray-4"  class="c-ray" x1="200" y1="160" x2="200" y2="45"/>
+      <line id="morph-ray-5"  class="c-ray" x1="200" y1="160" x2="200" y2="45"/>
+      <line id="morph-ray-6"  class="c-ray" x1="200" y1="160" x2="200" y2="45"/>
+      <line id="morph-ray-7"  class="c-ray" x1="200" y1="160" x2="200" y2="45"/>
+      <line id="morph-ray-8"  class="c-ray" x1="200" y1="160" x2="200" y2="45"/>
+      <line id="morph-ray-9"  class="c-ray" x1="200" y1="160" x2="200" y2="45"/>
+      <line id="morph-ray-10" class="c-ray" x1="200" y1="160" x2="200" y2="45"/>
+      <line id="morph-ray-11" class="c-ray" x1="200" y1="160" x2="200" y2="45"/>
+      <line id="morph-ray-12" class="c-ray" x1="200" y1="160" x2="200" y2="45"/>
+      <line id="morph-ray-13" class="c-ray" x1="200" y1="160" x2="200" y2="45"/>
+      <line id="morph-ray-14" class="c-ray" x1="200" y1="160" x2="200" y2="45"/>
+      <line id="morph-ray-15" class="c-ray" x1="200" y1="160" x2="200" y2="45"/>
+      <line id="morph-ray-16" class="c-ray" x1="200" y1="160" x2="200" y2="45"/>
+      <line id="morph-ray-17" class="c-ray" x1="200" y1="160" x2="200" y2="45"/>
+
       <!-- Morphing shape outline — JS updates the points attribute each frame -->
       <polygon id="morph-outline" class="c-ring-poly" points=""/>
 
@@ -186,7 +206,12 @@ title: Home
   }
 
   /* ── DOM references ───────────────────────────────────────────────────── */
+  var NUM_RAYS = 18;
   var outline = document.getElementById('morph-outline');
+  var rays    = [];
+  for (var i = 0; i < NUM_RAYS; i++) {
+    rays.push(document.getElementById('morph-ray-' + i));
+  }
   var spokes  = [], nodes = [];
   for (var i = 0; i < ICONS; i++) {
     spokes.push(document.getElementById('morph-spoke-' + i));
@@ -273,6 +298,12 @@ title: Home
       pts.push(pt[0].toFixed(1) + ',' + pt[1].toFixed(1));
     }
     outline.setAttribute('points', pts.join(' '));
+
+    /* Update radial tiling lines — fixed arc-length positions, no iconOffset */
+    for (var r = 0; r < NUM_RAYS; r++) {
+      var rpos = morphPoint(r / NUM_RAYS, p);
+      if (rays[r]) { rays[r].setAttribute('x2', rpos[0].toFixed(1)); rays[r].setAttribute('y2', rpos[1].toFixed(1)); }
+    }
 
     /* Reposition each icon node and its spoke */
     for (var k = 0; k < ICONS; k++) {
