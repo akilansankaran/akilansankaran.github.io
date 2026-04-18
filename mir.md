@@ -3,8 +3,6 @@ layout: default
 title: ML for Materials (Harvard)
 ---
 
-* * *
-
 # ML for Materials (Harvard)
 
 <div class="content-container" markdown="1">

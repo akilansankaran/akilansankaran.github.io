@@ -3,8 +3,6 @@ layout: default
 title: PFAS Research
 ---
 
-* * *
-
 # PFAS Research
 
 <div class="content-container" markdown="1">

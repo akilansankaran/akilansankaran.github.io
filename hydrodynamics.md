@@ -3,8 +3,6 @@ layout: default
 title: Hydrodynamics at MIT
 ---
 
-* * *
-
 # Hydrodynamics at MIT
 
 <div class="content-container" markdown="1">

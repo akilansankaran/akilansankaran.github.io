@@ -2,8 +2,6 @@
 layout: default
 title: Music
 ---
-* * *
-
 # Music
 
 <div class="content-container" markdown="1">

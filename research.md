@@ -2,8 +2,6 @@
 layout: default
 title: Research
 ---
-* * *
-
 # Research Overview
 
 <div class="content-container" markdown="1">

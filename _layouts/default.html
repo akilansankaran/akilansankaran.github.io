@@ -7,48 +7,40 @@
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   </head>
   <body>
-    <header class="site-header">
-      <div class="nav-panel">
-        <nav class="contact-links">
-          <a href="/research" class="bold-link">Research</a>
-          <a href="/coursework" class="bold-link">Academic Background</a>
-          <a href="/music">Music</a>
-          <a href="https://www.youtube.com/channel/UC3BUUIJfTgrYauJq0PTKlng" target="_blank" rel="noopener noreferrer">YouTube</a>
-          <a href="mailto:akilansankaran@college.harvard.edu">Email</a>
-          <a href="https://linkedin.com/in/akilan-sankaran/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        </nav>
+    <nav class="navbar">
+      <a href="/" class="nav-brand">Akilan Sankaran</a>
+      <div class="nav-links">
+        <a href="/research">Research</a>
+        <a href="/coursework">Background</a>
+        <a href="/music">Music</a>
+        <a href="https://www.youtube.com/channel/UC3BUUIJfTgrYauJq0PTKlng" target="_blank" rel="noopener noreferrer" class="nav-hide-mobile">YouTube</a>
+        <a href="mailto:akilansankaran@college.harvard.edu">Email</a>
+        <a href="https://linkedin.com/in/akilan-sankaran/" target="_blank" rel="noopener noreferrer" class="nav-hide-mobile">LinkedIn</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
       </div>
-      <h1 class="site-title">
-        <a href="/">Akilan Sankaran</a>
-        <div class="site-subtitle">Harvard University</div>
-      </h1>
-      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark mode">☀️</button>
-    </header>
+    </nav>
     <main class="container">
       {{ content }}
     </main>
     <script>
-      // Theme toggle functionality
       const themeToggle = document.getElementById('theme-toggle');
       const html = document.documentElement;
-      
-      // Check for saved theme preference or default to dark
-      const currentTheme = localStorage.getItem('theme') || 'dark';
+
+      const currentTheme = localStorage.getItem('theme') || 'light';
       html.setAttribute('data-theme', currentTheme);
       updateThemeIcon(currentTheme);
-      
+
       themeToggle.addEventListener('click', () => {
-        const currentTheme = html.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        html.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme);
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateThemeIcon(next);
       });
-      
+
       function updateThemeIcon(theme) {
         themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
       }

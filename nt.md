@@ -3,8 +3,6 @@ layout: default
 title: Number Theory
 ---
 
-* * *
-
 # Number Theory
 
 <div class="content-container" markdown="1">

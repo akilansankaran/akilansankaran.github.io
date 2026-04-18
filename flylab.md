@@ -3,8 +3,6 @@ layout: default
 title: Transgenic Drosophila Line Generation
 ---
 
-* * *
-
 # Transgenic *Drosophila* Line Generation
 
 <div class="content-container" markdown="1">

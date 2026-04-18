@@ -1,6 +1,5 @@
 lsi: false
 safe: true
-source: [your repo's top level directory]
 incremental: false
 highlighter: rouge
 gist:
@@ -8,9 +7,9 @@ gist:
 kramdown:
   math_engine: mathjax
   syntax_highlighter: rouge
-  
+
 url: https://akilansankaran.github.io
 baseurl: ""
 
-title: [Akilan Sankaran]
-description: [Harvard University]
+title: Akilan Sankaran
+description: Harvard University

@@ -3,8 +3,6 @@ layout: default
 title: Carrier Recombination
 ---
 
-* * *
-
 # Carrier Recombination at Sandia National Labs
 
 <div class="content-container" markdown="1">
