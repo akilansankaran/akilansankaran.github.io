@@ -321,11 +321,11 @@ code, pre {
   display: block;
 }
 
-/* Outer hexagon frame */
+/* Outer hexagon frame — more visible */
 .c-ring-line {
-  stroke: var(--border);
-  stroke-width: 1;
-  opacity: 0.22;
+  stroke: var(--text-muted);
+  stroke-width: 1.5;
+  opacity: 0.45;
   transition: stroke 0.3s;
 }
 
@@ -379,19 +379,44 @@ code, pre {
   stroke-width: 2;
 }
 
-/* Ripple ring — expands outward from node center */
-.c-ripple {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 0.8;
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: cRipple 3s ease-out infinite;
+/* Slow orbital rotation of the whole constellation */
+.c-constellation {
+  transform-origin: 200px 160px;
+  animation: constellationSpin 80s linear infinite;
 }
 
-@keyframes cRipple {
-  0%   { transform: scale(1);   opacity: 0.32; }
-  100% { transform: scale(1.9); opacity: 0; }
+@keyframes constellationSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Materials hexagon spins on its own axis */
+.c-hex-spin {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hexSpin 10s linear infinite;
+}
+
+@keyframes hexSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Fly wing fill */
+.c-icon-wing {
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 0.8;
+  opacity: 0.45;
+}
+
+/* Recombination: dashed hole ring */
+.c-icon-hole {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-dasharray: 3.5 2;
+  opacity: 0.7;
 }
 
 /* Icon primitives — inherit color from .c-node */
