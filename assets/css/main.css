@@ -381,27 +381,13 @@ code, pre {
   stroke-width: 2;
 }
 
-/* Constellation rotates slowly around its center */
-.c-constellation {
-  transform-origin: 200px 160px;
-  animation: constellationSpin 72s linear infinite;
-}
-
-@keyframes constellationSpin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-/* Icon content counter-rotates at the same rate to stay upright */
-.c-icon-content {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: iconCounterSpin 72s linear infinite;
-}
-
-@keyframes iconCounterSpin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(-360deg); }
+/* Morphing shape outline polygon */
+.c-ring-poly {
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 1.8;
+  opacity: 0.55;
+  transition: stroke 0.3s, opacity 0.3s;
 }
 
 /* Materials hexagon spins on its own axis */
