@@ -203,9 +203,9 @@ title: Home
   var holding     = true;   /* true = pausing on curShape before transitioning */
   var holdElapsed = 0;
 
-  var HOLD_MS  = 2200;   /* ms to pause on each shape */
-  var TRANS_MS = 2600;   /* ms for each shape-to-shape morph */
-  var ORBIT_MS = 20000;  /* ms for one full orbit of the icons */
+  var HOLD_MS  = 5000;   /* ms to pause on each shape */
+  var TRANS_MS = 5600;   /* ms for each shape-to-shape morph */
+  var ORBIT_MS = 32000;  /* ms for one full orbit of the icons */
 
   var iconOffset = 0;    /* continuously increasing fractional position */
   var lastTs     = null;
