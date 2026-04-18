@@ -299,9 +299,9 @@ title: Home
     }
     outline.setAttribute('points', pts.join(' '));
 
-    /* Update radial tiling lines — fixed arc-length positions, no iconOffset */
+    /* Update radial tiling lines — rotate with icons via iconOffset */
     for (var r = 0; r < NUM_RAYS; r++) {
-      var rpos = morphPoint(r / NUM_RAYS, p);
+      var rpos = morphPoint((iconOffset + r / NUM_RAYS) % 1, p);
       if (rays[r]) { rays[r].setAttribute('x2', rpos[0].toFixed(1)); rays[r].setAttribute('y2', rpos[1].toFixed(1)); }
     }
 
