@@ -205,7 +205,7 @@ title: Home
 
   var HOLD_MS  = 5000;   /* ms to pause on each shape */
   var TRANS_MS = 5600;   /* ms for each shape-to-shape morph */
-  var ORBIT_MS = 32000;  /* ms for one full orbit of the icons */
+  var ORBIT_MS = 50000;  /* ms for one full orbit of the icons */
 
   var iconOffset = 0;    /* continuously increasing fractional position */
   var lastTs     = null;
