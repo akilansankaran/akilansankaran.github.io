@@ -381,6 +381,29 @@ code, pre {
   stroke-width: 2;
 }
 
+/* Constellation rotates slowly around its center */
+.c-constellation {
+  transform-origin: 200px 160px;
+  animation: constellationSpin 72s linear infinite;
+}
+
+@keyframes constellationSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Icon content counter-rotates at the same rate to stay upright */
+.c-icon-content {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: iconCounterSpin 72s linear infinite;
+}
+
+@keyframes iconCounterSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
 /* Materials hexagon spins on its own axis */
 .c-hex-spin {
   transform-box: fill-box;
@@ -428,7 +451,30 @@ code, pre {
   stroke-linecap: round;
 }
 
-.c-icon-drop { fill: currentColor; }
+/* Teardrop — filled + light stroke so it reads clearly */
+.c-icon-drop {
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 0.5;
+  opacity: 0.85;
+}
+
+/* PFAS atom colors */
+.c-atom-c {
+  fill: currentColor;
+}
+
+.c-atom-f {
+  fill: var(--link);
+}
+
+.c-bond-cf {
+  stroke: var(--text-muted);
+  stroke-width: 1;
+  stroke-linecap: round;
+  fill: none;
+  opacity: 0.7;
+}
 
 text.c-icon {
   fill: currentColor;
