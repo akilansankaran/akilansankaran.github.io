@@ -228,7 +228,7 @@ title: Home
   var holding     = true;   /* true = pausing on curShape before transitioning */
   var holdElapsed = 0;
 
-  var HOLD_MS  = 5000;   /* ms to pause on each shape */
+  var HOLD_MS  = 1500;   /* ms to pause on each shape */
   var TRANS_MS = 5600;   /* ms for each shape-to-shape morph */
   var ORBIT_MS = 50000;  /* ms for one full orbit of the icons */
 
