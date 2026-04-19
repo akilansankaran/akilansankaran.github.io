@@ -16,3 +16,9 @@ While at [Sandia National Laboratories](https://www.sandia.gov/), a Federally Fu
 </ul>
 A preprint of my work at Sandia will be made available soon.
 </div>
+
+<div class="other-endeavors">
+  <h3 class="other-endeavors-title">Other Endeavors</h3>
+  {% include morph-anim.html exclude="2" %}
+</div>
+

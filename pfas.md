@@ -17,3 +17,8 @@ In 2024, in a semi-independent research project (with guidance from Dr. Normand 
 
 A preprint of this work will be made available shortly.
 </div>
+
+<div class="other-endeavors">
+  <h3 class="other-endeavors-title">Other Endeavors</h3>
+  {% include morph-anim.html exclude="3" %}
+</div>

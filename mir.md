@@ -16,3 +16,8 @@ My current materials modeling research within the [Kozinsky Lab](https://mir.g.h
   <li>Asymmetric representations of spin-dependent neural-network potentials.</li>
 </ul>
 </div>
+
+<div class="other-endeavors">
+  <h3 class="other-endeavors-title">Other Endeavors</h3>
+  {% include morph-anim.html exclude="1" %}
+</div>

@@ -18,3 +18,8 @@ In 2024, while at the [Research Science Institute](https://www.cee.org/programs/
 
 Here is a [preprint](./sts_paper_final.pdf) of my droplet dynamics work, soon to be submitted for publication in the *Journal of Fluid Mechanics*.
 </div>
+
+<div class="other-endeavors">
+  <h3 class="other-endeavors-title">Other Endeavors</h3>
+  {% include morph-anim.html exclude="5" %}
+</div>

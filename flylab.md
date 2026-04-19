@@ -15,3 +15,8 @@ While involved with the Fly Lab at Albuquerque Academy, I participated in a mult
     <li> I performed dissections of the Central Nervous System (CNS) within flies of a specific fly line to corroborate successful conversion, particularly given the serotonergic role of expression within the line of consideration.</li>
 </ul>
 </div>
+
+<div class="other-endeavors">
+  <h3 class="other-endeavors-title">Other Endeavors</h3>
+  {% include morph-anim.html exclude="4" %}
+</div>
