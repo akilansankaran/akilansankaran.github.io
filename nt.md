@@ -3,9 +3,14 @@ layout: default
 title: Number Theory
 ---
 
-# Number Theory
 
-<div class="research-page-layout">
+<div class="research-header-layout">
+<h1>Number Theory</h1>
+<aside class="research-anim-side">
+  {% include morph-anim.html exclude="0" %}
+</aside>
+</div>
+
 <div class="content-container" markdown="1">
 
 My two research projects in theoretical mathematics, under supervision of Dr. David Metzler at [Albuquerque Academy](https://www.aa.edu/), centered on investigation of problems in analytic number theory:
@@ -21,8 +26,4 @@ My two research projects in theoretical mathematics, under supervision of Dr. Da
 A compilation of results on the analysis of variants of the abc-conjecture, together with analysis of high-quality triples, can be found [at this link](./isef_paper_abcs.pdf).
 
 I will shortly make available various expository presentations regarding these projects.
-</div>
-<aside class="research-anim-side">
-  {% include morph-anim.html exclude="0" %}
-</aside>
 </div>

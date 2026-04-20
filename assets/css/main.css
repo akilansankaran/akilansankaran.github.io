@@ -503,34 +503,40 @@ text.c-icon {
   opacity: 1;
 }
 
-/* ===== Research subpage: side-by-side layout ===== */
-.research-page-layout {
+/* ===== Research subpage: title row (heading + animation) ===== */
+.research-header-layout {
   display: flex;
-  gap: 2.5rem;
   align-items: flex-start;
-  margin-bottom: 2rem;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 1.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.research-header-layout h1 {
+  flex: 1;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .research-anim-side {
-  flex: 0 0 200px;
-  position: sticky;
-  top: 5rem;
+  flex: 0 0 210px;
 }
 
 .research-anim-side .hero-anim {
   margin: 0;
 }
 
-.research-anim-side .other-endeavors-title {
-  margin-bottom: 0.5rem;
+/* .research-page-layout is now just a plain block wrapper */
+.research-page-layout {
+  margin-bottom: 2rem;
 }
 
 @media (max-width: 680px) {
-  .research-page-layout {
+  .research-header-layout {
     flex-direction: column;
   }
   .research-anim-side {
-    position: static;
     flex: none;
     width: 100%;
   }

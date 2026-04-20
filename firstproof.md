@@ -3,9 +3,14 @@ layout: default
 title: First Proof Challenge Responses
 ---
 
-# First Proof Challenge Responses
 
-<div class="research-page-layout">
+<div class="research-header-layout">
+<h1>First Proof Challenge Responses</h1>
+<aside class="research-anim-side">
+  {% include morph-anim.html exclude="6" %}
+</aside>
+</div>
+
 <div class="content-container" markdown="1">
 
 The [First Proof Challenge](https://firstproof.ai/) is a benchmark created by a group of mathematicians, designed to test the frontier of AI-assisted mathematical reasoning. The challenge posed a series of research-caliber mathematical problems (spanning number theory, combinatorics, analysis, and algebra), intended to be solvable via model prompting within roughly a week.
@@ -18,8 +23,4 @@ The [First Proof Challenge](https://firstproof.ai/) is a benchmark created by a 
 
 A preprint of this work is [available here](./first_proof_new.pdf).
 
-</div>
-<aside class="research-anim-side">
-  {% include morph-anim.html exclude="6" %}
-</aside>
 </div>

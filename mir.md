@@ -3,9 +3,14 @@ layout: default
 title: ML for Materials (Harvard)
 ---
 
-# ML for Materials (Harvard)
 
-<div class="research-page-layout">
+<div class="research-header-layout">
+<h1>ML for Materials (Harvard)</h1>
+<aside class="research-anim-side">
+  {% include morph-anim.html exclude="1" %}
+</aside>
+</div>
+
 <div class="content-container" markdown="1">
 
 My current materials modeling research within the [Kozinsky Lab](https://mir.g.harvard.edu/) at Harvard lies at the interface of machine learning, physics, chemistry, and analysis. The focus of the lab centers on computational materials modeling, discovery, and simulation efforts, with a synthesis of theoretical and applied frameworks. My efforts are centered on the following:
@@ -15,8 +20,4 @@ My current materials modeling research within the [Kozinsky Lab](https://mir.g.h
   <li>Method development for top-down differentiable learning of neural-network (NN) potentials.</li>
   <li>Asymmetric representations of spin-dependent neural-network potentials.</li>
 </ul>
-</div>
-<aside class="research-anim-side">
-  {% include morph-anim.html exclude="1" %}
-</aside>
 </div>

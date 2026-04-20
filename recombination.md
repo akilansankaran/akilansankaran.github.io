@@ -3,9 +3,14 @@ layout: default
 title: Carrier Recombination
 ---
 
-# Carrier Recombination at Sandia National Labs
 
-<div class="research-page-layout">
+<div class="research-header-layout">
+<h1>Carrier Recombination at Sandia National Labs</h1>
+<aside class="research-anim-side">
+  {% include morph-anim.html exclude="2" %}
+</aside>
+</div>
+
 <div class="content-container" markdown="1">
 
 While at [Sandia National Laboratories](https://www.sandia.gov/), a Federally Funded Research and Development Corporation (FFRDC) under the U.S. Department of Energy, I investigated temperature-dependence carrier recombination in semiconductor materials as a member of the computational materials team (Dept. 1800). I am grateful for the supervision of Dr. Normand Modine during this project.
@@ -15,8 +20,4 @@ While at [Sandia National Laboratories](https://www.sandia.gov/), a Federally Fu
   <li>I also interacted with several R&D projects beyond the carrier recombination framework, including in broader, lab-wide materials and chemistry frameworks – whether experimental or computational. In this process, I engaged with techniques such as Chemical Vapor Deposition (CVD), sputtering, broader experimental defect modeling work, high-entropy alloys, single photon sources, and magnetic hysteresis.</li>
 </ul>
 A preprint of my work at Sandia will be made available soon.
-</div>
-<aside class="research-anim-side">
-  {% include morph-anim.html exclude="2" %}
-</aside>
 </div>
