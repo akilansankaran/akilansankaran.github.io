@@ -5,8 +5,8 @@ title: Transgenic Drosophila Line Generation
 
 # Transgenic *Drosophila* Line Generation
 
+<div class="research-page-layout">
 <div class="content-container" markdown="1">
-[Back to Research](/research)
 
 While involved with the Fly Lab at Albuquerque Academy, I participated in a multi-institutional collaboration, led by researchers at Stanford, in generating suitable drivers for *Drosophila* fly lines.
 <ul style="list-style-type: square; margin-left: 1.2em;">
@@ -15,8 +15,7 @@ While involved with the Fly Lab at Albuquerque Academy, I participated in a mult
     <li> I performed dissections of the Central Nervous System (CNS) within flies of a specific fly line to corroborate successful conversion, particularly given the serotonergic role of expression within the line of consideration.</li>
 </ul>
 </div>
-
-<div class="other-endeavors">
-  <h3 class="other-endeavors-title">Other Endeavors</h3>
+<aside class="research-anim-side">
   {% include morph-anim.html exclude="4" %}
+</aside>
 </div>

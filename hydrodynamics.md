@@ -5,8 +5,8 @@ title: Hydrodynamics at MIT
 
 # Hydrodynamics at MIT
 
+<div class="research-page-layout">
 <div class="content-container" markdown="1">
-[Back to Research](/research)
 
 In 2024, while at the [Research Science Institute](https://www.cee.org/programs/research-science-institute), I investigated hydrodynamics at [MIT's Applied Mathematics Laboratory](https://thales.mit.edu/bush/) under the direction of Diego Israel Chavez and Prof. John Bush. As a brief summary of my research in the lab:
 <ul style="list-style-type: square; margin-left: 1.2em;">
@@ -18,8 +18,7 @@ In 2024, while at the [Research Science Institute](https://www.cee.org/programs/
 
 Here is a [preprint](./sts_paper_final.pdf) of my droplet dynamics work, soon to be submitted for publication in the *Journal of Fluid Mechanics*.
 </div>
-
-<div class="other-endeavors">
-  <h3 class="other-endeavors-title">Other Endeavors</h3>
+<aside class="research-anim-side">
   {% include morph-anim.html exclude="5" %}
+</aside>
 </div>

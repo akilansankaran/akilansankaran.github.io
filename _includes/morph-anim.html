@@ -3,8 +3,8 @@
   Renders the morphing-shape constellation animation.
 
   Optional parameter:
-    exclude  — string "0"–"5": omit that node so only 5 icons appear.
-               Omit the parameter entirely for all 6 icons.
+    exclude  — string "0"–"6": omit that node so only 6 icons appear.
+               Omit the parameter entirely for all 7 icons.
 
   Node index → research page mapping:
     0 = nt (Number Theory)
@@ -13,6 +13,7 @@
     3 = pfas (PFAS)
     4 = flylab (Drosophila)
     5 = hydrodynamics (Hydrodynamics)
+    6 = firstproof (First Proof)
 {% endcomment %}
 
 {% if include.exclude %}
@@ -23,7 +24,7 @@
 
 {% comment %}Build list of active node indices as a string for JS{% endcomment %}
 {% assign _active_parts = "" | split: "" %}
-{% for _i in (0..5) %}
+{% for _i in (0..6) %}
   {% unless _i == _ex %}
     {% assign _active_parts = _active_parts | push: _i %}
   {% endunless %}
@@ -56,7 +57,7 @@
     <polygon id="morph-outline" class="c-ring-poly" points=""/>
 
     <!-- Spokes: one per active node, keyed by original node index -->
-    {% for _i in (0..5) %}
+    {% for _i in (0..6) %}
       {% unless _i == _ex %}
         <line id="morph-spoke-{{ _i }}" class="c-spoke" x1="200" y1="160" x2="200" y2="45"/>
       {% endunless %}
@@ -134,6 +135,16 @@
         <circle class="c-node-bg" cx="0" cy="0" r="22"/>
         <path class="c-icon-drop"
           d="M0,-12 C10,-2 10,9 0,13 C-10,9 -10,-2 0,-12 Z"/>
+      </a>
+    </g>
+    {% endunless %}
+
+    {% unless 6 == _ex %}
+    <g id="morph-node-6" transform="translate(100,103)">
+      <a href="/firstproof" class="c-node">
+        <circle class="c-node-bg" cx="0" cy="0" r="22"/>
+        <rect class="c-icon-qed" x="-11" y="-5" width="9" height="9" rx="1"/>
+        <text class="c-icon" x="5" y="1" style="font-size:11px;">𝒜</text>
       </a>
     </g>
     {% endunless %}

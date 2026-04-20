@@ -445,6 +445,12 @@ code, pre {
   stroke-linecap: round;
 }
 
+/* QED box icon (firstproof) */
+.c-icon-qed {
+  fill: currentColor;
+  opacity: 0.85;
+}
+
 /* Teardrop — filled + light stroke so it reads clearly */
 .c-icon-drop {
   fill: currentColor;
@@ -495,6 +501,39 @@ text.c-icon {
 .c-node:hover .c-label,
 .c-node:focus .c-label {
   opacity: 1;
+}
+
+/* ===== Research subpage: side-by-side layout ===== */
+.research-page-layout {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.research-anim-side {
+  flex: 0 0 200px;
+  position: sticky;
+  top: 5rem;
+}
+
+.research-anim-side .hero-anim {
+  margin: 0;
+}
+
+.research-anim-side .other-endeavors-title {
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 680px) {
+  .research-page-layout {
+    flex-direction: column;
+  }
+  .research-anim-side {
+    position: static;
+    flex: none;
+    width: 100%;
+  }
 }
 
 /* ===== Other Endeavors (research sub-pages) ===== */

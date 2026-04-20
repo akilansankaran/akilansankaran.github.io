@@ -32,4 +32,7 @@ I have conducted within and across the fields of mathematics, quantum and fluid 
   <a href="/nt" class="research-box">
     <div class="box-title">Number Theory</div>
   </a>
+  <a href="/firstproof" class="research-box">
+    <div class="box-title">First Proof Challenge Responses</div>
+  </a>
 </div>

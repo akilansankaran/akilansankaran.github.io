@@ -5,8 +5,8 @@ title: Number Theory
 
 # Number Theory
 
+<div class="research-page-layout">
 <div class="content-container" markdown="1">
-[Back to Research](/research)
 
 My two research projects in theoretical mathematics, under supervision of Dr. David Metzler at [Albuquerque Academy](https://www.aa.edu/), centered on investigation of problems in analytic number theory:
 
@@ -22,8 +22,7 @@ A compilation of results on the analysis of variants of the abc-conjecture, toge
 
 I will shortly make available various expository presentations regarding these projects.
 </div>
-
-<div class="other-endeavors">
-  <h3 class="other-endeavors-title">Other Endeavors</h3>
+<aside class="research-anim-side">
   {% include morph-anim.html exclude="0" %}
+</aside>
 </div>

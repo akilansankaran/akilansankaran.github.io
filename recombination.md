@@ -5,8 +5,8 @@ title: Carrier Recombination
 
 # Carrier Recombination at Sandia National Labs
 
+<div class="research-page-layout">
 <div class="content-container" markdown="1">
-[Back to Research](/research)
 
 While at [Sandia National Laboratories](https://www.sandia.gov/), a Federally Funded Research and Development Corporation (FFRDC) under the U.S. Department of Energy, I investigated temperature-dependence carrier recombination in semiconductor materials as a member of the computational materials team (Dept. 1800). I am grateful for the supervision of Dr. Normand Modine during this project.
 <ul style="list-style-type: square; margin-left: 1.2em;">
@@ -16,9 +16,7 @@ While at [Sandia National Laboratories](https://www.sandia.gov/), a Federally Fu
 </ul>
 A preprint of my work at Sandia will be made available soon.
 </div>
-
-<div class="other-endeavors">
-  <h3 class="other-endeavors-title">Other Endeavors</h3>
+<aside class="research-anim-side">
   {% include morph-anim.html exclude="2" %}
+</aside>
 </div>
-

@@ -5,8 +5,8 @@ title: PFAS Research
 
 # PFAS Research
 
+<div class="research-page-layout">
 <div class="content-container" markdown="1">
-[Back to Research](/research)
 
 In 2024, in a semi-independent research project (with guidance from Dr. Normand Modine and utilization of resources from [Sandia National Laboratories](https://sandia.gov)), I investigated the degradation of per- and poly-fluoroalkyl substances through electronic structure and molecular dynamics simulations.
 <ul style="list-style-type: square; margin-left: 1.2em;">
@@ -17,8 +17,7 @@ In 2024, in a semi-independent research project (with guidance from Dr. Normand 
 
 A preprint of this work will be made available shortly.
 </div>
-
-<div class="other-endeavors">
-  <h3 class="other-endeavors-title">Other Endeavors</h3>
+<aside class="research-anim-side">
   {% include morph-anim.html exclude="3" %}
+</aside>
 </div>
