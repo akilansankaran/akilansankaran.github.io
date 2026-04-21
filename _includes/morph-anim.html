@@ -166,11 +166,13 @@
 
   /* ── Shape samplers ── */
 
+  /* Circle: starts at top, clockwise */
   function circlePoint(t) {
     var a = 2 * Math.PI * t - Math.PI / 2;
     return [CX + R * Math.cos(a), CY + R * Math.sin(a)];
   }
 
+  /* Regular n-gon: circumradius R, top vertex, clockwise */
   function regPolyPoint(n, t) {
     t = ((t % 1) + 1) % 1;
     var side = Math.floor(t * n);
@@ -182,6 +184,7 @@
     return [x0 + u * (x1 - x0), y0 + u * (y1 - y0)];
   }
 
+  /* 2:1 rectangle, same perimeter as hexagon (6R), starts at top-centre */
   function rectPoint(t) {
     t = ((t % 1) + 1) % 1;
     var hw = R, hh = R / 2;
@@ -205,13 +208,71 @@
     return [CX, CY - hh];
   }
 
-  /* ── Shape sequence ── */
+  /* Lemniscate-like figure-8 (Lissajous 2:1).
+     Traces two horizontal loops crossing at the centre. */
+  function lemniscatePoint(t) {
+    var theta = 2 * Math.PI * t + Math.PI / 2; // offset so t=0 is top of right loop
+    var A = R * 0.88, B = R * 0.48;
+    return [CX + A * Math.sin(theta),
+            CY + B * Math.sin(2 * theta)];
+  }
+
+  /* Astroid (4-cusped hypocycloid): x=R·cos³θ, y=R·sin³θ.
+     Starts at top cusp, 4-fold symmetry — tetrahedral feel. */
+  function astroidPoint(t) {
+    var theta = 2 * Math.PI * t - Math.PI / 2;
+    var c = Math.cos(theta), s = Math.sin(theta);
+    return [CX + R * c * c * c,
+            CY + R * s * s * s];
+  }
+
+  /* Deltoid (3-cusped hypocycloid, a = R/3).
+     Rotated so top cusp sits at (CX, CY-R). Smooth, triangular. */
+  function deltoidPoint(t) {
+    var theta = 2 * Math.PI * t;
+    var a = R / 3;
+    return [CX + a * (2 * Math.sin(theta) - Math.sin(2 * theta)),
+            CY - a * (2 * Math.cos(theta) + Math.cos(2 * theta))];
+  }
+
+  /* ── 3-D projected shapes ──────────────────────────────────────
+     These are 2-D projections of 3-D geometry; they read as depth.
+  ────────────────────────────────────────────────────────────── */
+
+  /* Tilted disk: circle seen at ~65° from the horizontal —
+     an ellipse with heavy Y-compression (looks like a coin). */
+  function tiltedDiskPoint(t) {
+    var theta = 2 * Math.PI * t - Math.PI / 2;
+    return [CX + R       * Math.cos(theta),
+            CY + R * 0.40 * Math.sin(theta)];
+  }
+
+  /* Isometric hexagon: regular hex with Y × 0.5 =
+     the top face of a cube in isometric projection. */
+  function isoHexPoint(t) {
+    t = ((t % 1) + 1) % 1;
+    var side = Math.floor(t * 6);
+    var u    = t * 6 - side;
+    var a0 = -Math.PI / 2 + 2 * Math.PI * side / 6;
+    var a1 = -Math.PI / 2 + 2 * Math.PI * (side + 1) / 6;
+    var x0 = CX + R * Math.cos(a0), y0 = CY + R * Math.sin(a0) * 0.5;
+    var x1 = CX + R * Math.cos(a1), y1 = CY + R * Math.sin(a1) * 0.5;
+    return [x0 + u * (x1 - x0), y0 + u * (y1 - y0)];
+  }
+
+  /* ── Shape sequence (11 shapes; 3-D ones at positions 4 & 8) ── */
   var SHAPES = [
-    function (t) { return regPolyPoint(6, t); },
-    function (t) { return circlePoint(t);     },
-    function (t) { return regPolyPoint(3, t); },
-    function (t) { return rectPoint(t);       },
-    function (t) { return regPolyPoint(4, t); }
+    function (t) { return regPolyPoint(6, t);  },  /* hexagon          */
+    function (t) { return circlePoint(t);      },  /* circle           */
+    function (t) { return lemniscatePoint(t);  },  /* lemniscate (∞)   */
+    function (t) { return regPolyPoint(3, t);  },  /* triangle         */
+    function (t) { return tiltedDiskPoint(t);  },  /* 3D tilted disk   */
+    function (t) { return regPolyPoint(7, t);  },  /* heptagon         */
+    function (t) { return astroidPoint(t);     },  /* astroid (4-cusp) */
+    function (t) { return rectPoint(t);        },  /* rectangle        */
+    function (t) { return isoHexPoint(t);      },  /* 3D iso-hexagon   */
+    function (t) { return deltoidPoint(t);     },  /* deltoid (3-cusp) */
+    function (t) { return regPolyPoint(4, t);  }   /* diamond          */
   ];
 
   function sampleShape(fn) {
@@ -238,7 +299,7 @@
   var holding     = true;
   var holdElapsed = 0;
 
-  var HOLD_MS  = 1500;
+  var HOLD_MS  = 1000;
   var TRANS_MS = 5600;
   var ORBIT_MS = 50000;
 
