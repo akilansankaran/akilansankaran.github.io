@@ -30,6 +30,7 @@
   {% endunless %}
 {% endfor %}
 
+<div class="morph-label-wrap">
 <div class="hero-anim">
   <svg viewBox="0 0 400 320" class="c-svg" xmlns="http://www.w3.org/2000/svg" aria-label="Research topics">
 
@@ -150,6 +151,8 @@
     {% endunless %}
 
   </svg>
+</div>
+<p class="morph-label" id="morph-label">Explore Research</p>
 </div>
 
 <script>
@@ -290,6 +293,24 @@
   /* Nodes and spokes keyed by original index via ACTIVE */
   var nodeEls  = ACTIVE.map(function (i) { return document.getElementById('morph-node-'  + i); });
   var spokeEls = ACTIVE.map(function (i) { return document.getElementById('morph-spoke-' + i); });
+
+  /* ── Hover label ── */
+  var NODE_NAMES = [
+    'Number Theory',       /* 0 */
+    'ML for Materials',    /* 1 */
+    'Carrier Recombination', /* 2 */
+    'PFAS',                /* 3 */
+    'Transgenic Flies',    /* 4 */
+    'Hydrodynamics',       /* 5 */
+    'First Proof'          /* 6 */
+  ];
+  var label = document.getElementById('morph-label');
+  nodeEls.forEach(function (el, k) {
+    if (!el) return;
+    var name = NODE_NAMES[ACTIVE[k]] || '';
+    el.addEventListener('mouseenter', function () { if (label) label.textContent = name; });
+    el.addEventListener('mouseleave', function () { if (label) label.textContent = 'Explore Research'; });
+  });
 
   /* ── State ── */
   var curIdx  = 0, nxtIdx = 1;

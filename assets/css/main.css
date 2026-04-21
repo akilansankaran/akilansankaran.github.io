@@ -315,6 +315,47 @@ code, pre {
   animation: heroFadeUp 0.5s ease 0s forwards;
 }
 
+/* Morph label wrapper: SVG + hover label side-by-side (or stacked) */
+.morph-label-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.morph-label-wrap > .hero-anim {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0; /* wrapper provides spacing instead */
+}
+
+.morph-label {
+  flex: 0 0 auto;
+  font-family: 'Inter', 'system-ui', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #111;
+  min-width: 130px;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+[data-theme="dark"] .morph-label {
+  color: var(--text);
+}
+
+/* Subpage aside: stack label above the animation */
+.research-anim-side .morph-label-wrap {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.research-anim-side .morph-label {
+  order: -1;
+  min-width: 0;
+}
+
 .c-svg {
   width: 100%;
   max-width: 440px;
