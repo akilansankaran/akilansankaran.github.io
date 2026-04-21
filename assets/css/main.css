@@ -344,6 +344,22 @@ code, pre {
   color: var(--text);
 }
 
+.morph-label::after {
+  content: '|';
+  margin-left: 1px;
+  animation: blinkCursor 1s step-end infinite;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* No cursor on subpage aside */
+.research-anim-side .morph-label::after {
+  display: none;
+}
+
 /* Subpage aside: stack label above the animation */
 .research-anim-side .morph-label-wrap {
   flex-direction: column;
@@ -396,7 +412,7 @@ code, pre {
 
 /* Each node is an SVG <a> — color cascades to all children via currentColor */
 .c-node {
-  color: var(--text-muted);
+  color: var(--link);
   cursor: pointer;
   text-decoration: none;
   outline: none;
