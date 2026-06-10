@@ -10,11 +10,16 @@
   <div class="solid-canvas-wrap">
     <svg id="solid-svg" class="solid-svg" viewBox="0 0 400 410"
          xmlns="http://www.w3.org/2000/svg" aria-label="Disciplines explorer"></svg>
-    <p class="solid-hint">Drag to rotate &middot; click a discipline</p>
   </div>
   <aside class="solid-panel" id="solid-panel" aria-live="polite">
     <p class="solid-panel-empty">Select a discipline to explore its topics.</p>
   </aside>
+</div>
+
+<h2 class="solid-list-title">All topics</h2>
+<div class="topic-tabs" id="topic-tabs">
+  <div class="topic-tabs-bar" id="topic-tabs-bar"></div>
+  <div class="topic-tabs-body" id="topic-tabs-body"></div>
 </div>
 
 <script>
@@ -35,8 +40,8 @@
         {n:'Representation theory', ab:'Rep'},{n:'Real analysis', ab:'Real An'},
         {n:'Complex analysis', ab:'Cplx An'},{n:'Topology', ab:'Top'},
         {n:'Algebraic topology', ab:'Alg Top'},{n:'ODEs & PDEs', ab:'ODE/PDE'},
-        {n:'Fourier analysis', ab:'Fourier'},{n:'Measure theory', ab:'Meas'},
-        {n:'Lebesgue integration', ab:'Lebesgue'},{n:'Logic', ab:'Logic'},
+        {n:'Fourier analysis', ab:'Fourier', x:[1]},{n:'Measure theory', ab:'Meas', x:[3]},
+        {n:'Lebesgue integration', ab:'Lebesgue', x:[3]},{n:'Logic', ab:'Logic'},
         {n:'Probability', ab:'Prob'},{n:'Computability theory', ab:'Comput'}
       ] },
     { name: 'Physics', color: '#0ea5e9',
@@ -44,8 +49,9 @@
         {n:'Classical mechanics', ab:'Cl Mech'},{n:'Special relativity', ab:'SR'},
         {n:'Electromagnetism', ab:'E&M'},{n:'Quantum mechanics', ab:'QM'},
         {n:'Statistical mechanics', ab:'Stat Mech'},{n:'Thermodynamics', ab:'Thermo'},
-        {n:'Solid-state physics', ab:'Solid St'},{n:'Density functional theory', ab:'DFT'},
-        {n:'Perturbation theory', ab:'Pert'},{n:'Non-adiabatic dynamics', ab:'Non-adiab'}
+        {n:'Solid-state physics', ab:'Solid St'},{n:'Density functional theory', ab:'DFT', x:[4]},
+        {n:'Perturbation theory', ab:'Pert'},{n:'Non-adiabatic dynamics', ab:'Non-adiab'},
+        {n:'Fluid dynamics', ab:'Fluids', x:[0]}
       ] },
     { name: 'Computer Science', color: '#10b981',
       topics: [
@@ -58,21 +64,21 @@
     { name: 'Statistics', color: '#f59e0b',
       topics: [
         {n:'Statistical inference', ab:'Inference'},{n:'Probability', ab:'Prob'},
-        {n:'Borel sets', ab:'Borel'},{n:'Measure spaces', ab:'Meas Sp'},
+        {n:'Borel sets', ab:'Borel'},{n:'Measure spaces', ab:'Meas Sp', x:[0]},
         {n:'Markov decision processes', ab:'MDP'},{n:'Stochastic processes', ab:'Stoch'},
-        {n:'Lebesgue integration', ab:'Lebesgue'}
+        {n:'Lebesgue integration', ab:'Lebesgue', x:[0]}
       ] },
     { name: 'Chemistry', color: '#ef4444',
       topics: [
-        {n:'Inorganic catalysis', ab:'Inorg Cat'},{n:'Organic chemistry', ab:'Org Chem'},
-        {n:'Organic catalysts', ab:'Org Cat'},{n:'Biochemistry', ab:'Biochem'},
+        {n:'Inorganic catalysis', ab:'Inorg Cat'},{n:'Organic chemistry', ab:'Org Chem', x:[5]},
+        {n:'Organic catalysts', ab:'Org Cat'},{n:'Biochemistry', ab:'Biochem', x:[5]},
         {n:'Reductive defluorination', ab:'Defluor', href:'/pfas'},
-        {n:'Computational chemistry', ab:'Comp Chem', sub:[{n:'DFT molecular dynamics', ab:'DFT-MD'},{n:'Perturbation theory', ab:'Pert'}]}
+        {n:'Computational chemistry', ab:'Comp Chem', x:[1], sub:[{n:'DFT molecular dynamics', ab:'DFT-MD'},{n:'Perturbation theory', ab:'Pert'}]}
       ] },
     { name: 'Biology', color: '#ec4899',
       topics: [
         {n:'Molecular genetics', ab:'Mol Gen'},{n:'Transgenic organisms', ab:'Transgenic'},
-        {n:'Cell biology', ab:'Cell Bio'},{n:'Biochemistry', ab:'Biochem'},
+        {n:'Cell biology', ab:'Cell Bio'},{n:'Biochemistry', ab:'Biochem', x:[4]},
         {n:'CRISPR', ab:'CRISPR'},{n:'Bioinformatics', ab:'Bioinfo'},
         {n:'Transcriptomics', ab:'Transcr'},{n:'Perturbomics', ab:'Perturb'},
         {n:'mRNA stability', ab:'mRNA'}
@@ -130,8 +136,9 @@
     if (cls) e.setAttribute('class', cls);
     return e;
   }
-  var gEdges = el('g'), gSat = el('g'), gNodes = el('g');
+  var gEdges = el('g'), gXlinks = el('g'), gSat = el('g'), gNodes = el('g');
   svg.appendChild(gEdges);
+  svg.appendChild(gXlinks);
   svg.appendChild(gSat);
   svg.appendChild(gNodes);
 
@@ -141,8 +148,9 @@
     return l;
   });
 
-  var vEls = DISC.map(function (d) {
+  var vEls = DISC.map(function (d, i) {
     var g = el('g', 'solid-vertex');
+    g.style.cursor = 'pointer';
     var circ = el('circle', 'solid-vertex-dot');
     circ.setAttribute('stroke', d.color);
     var txt = el('text', 'solid-vertex-label');
@@ -150,14 +158,22 @@
     g.appendChild(circ);
     g.appendChild(txt);
     gNodes.appendChild(g);
+    g.addEventListener('mouseenter', function () { if (!dragging) showPreview(i); });
+    g.addEventListener('mouseleave', function () { clearPreview(); });
     return { g: g, c: circ, t: txt };
   });
 
-  /* ── Satellite topic network (rebuilt on selection) ── */
-  var satEls = [];
+  /* ── Satellite topic network (rebuilt on selection/hover) ── */
+  var satEls = [], xEls = [];
   function clearSat() {
     while (gSat.firstChild) gSat.removeChild(gSat.firstChild);
-    satEls = [];
+    while (gXlinks.firstChild) gXlinks.removeChild(gXlinks.firstChild);
+    satEls = []; xEls = [];
+  }
+  /* Full label unless the name is unreasonably long; abbreviations on hover */
+  function labelText(tp, full) {
+    if (!full) return tp.ab || tp.n;
+    return tp.n.length <= 16 ? tp.n : (tp.ab || tp.n);
   }
   function norm(v) {
     var m = Math.hypot(v[0], v[1], v[2]) || 1;
@@ -184,7 +200,7 @@
     return lbl;
   }
 
-  function buildSat(i) {
+  function buildSat(i, full) {
     clearSat();
     var d = DISC[i], base = VERT[i];
     var out = norm(base);
@@ -206,7 +222,7 @@
       line.setAttribute('stroke', d.color);
       gSat.appendChild(line);
       var dot = addDot(3.3, d.color, null, tp.href, tp.n);
-      var lbl = addLabel(tp.ab || tp.n, d.color, false);
+      var lbl = addLabel(labelText(tp, full), d.color, false);
       (function (idx) {
         dot.addEventListener('mouseenter', function () { highlightRow(idx, true); });
         dot.addEventListener('mouseleave', function () { highlightRow(idx, false); });
@@ -215,6 +231,14 @@
         });
       })(k);
       satEls.push({ line: line, dot: dot, lbl: lbl, pos: pos, parent: base });
+
+      /* Faint cross-discipline links to related vertices */
+      if (tp.x) tp.x.forEach(function (td) {
+        var xl = el('line', 'solid-xlink');
+        xl.setAttribute('stroke', DISC[td].color);
+        gXlinks.appendChild(xl);
+        xEls.push({ line: xl, pos: pos, target: VERT[td] });
+      });
 
       if (tp.sub) tp.sub.forEach(function (st, m) {
         var th2 = th + (m - (tp.sub.length - 1) / 2) * 0.3;
@@ -229,7 +253,7 @@
         l2.style.opacity = 0.28;
         gSat.appendChild(l2);
         var sd = addDot(2.1, d.color, 0.8, null, st.n);
-        var sl = addLabel(st.ab || st.n, d.color, true);
+        var sl = addLabel(labelText(st, full), d.color, true);
         satEls.push({ line: l2, dot: sd, lbl: sl, pos: spos, parent: pos });
       });
     });
@@ -264,12 +288,40 @@
     if (li) li.classList.toggle('hot', on);
   }
 
-  /* ── Selection ── */
-  var selected = -1;
-  function select(i) { selected = i; buildSat(i); renderPanel(i); }
+  /* ── Selection & orientation ── */
+  var selected = -1, preview = -1;
+  var targetX = null, targetY = null;
+
+  /* Rotate so discipline i's vertex faces the camera (courses guaranteed visible) */
+  function orientTo(i) {
+    var nv = norm(VERT[i]);
+    var th = Math.atan2(-nv[0], nv[2]);
+    var z1 = -nv[0] * Math.sin(th) + nv[2] * Math.cos(th);
+    targetY = th;
+    targetX = Math.atan2(nv[1], z1);
+  }
+
+  function select(i) {
+    selected = i; preview = -1;
+    buildSat(i, true);     /* full topic names */
+    renderPanel(i);
+    orientTo(i);
+  }
   function deselect() {
-    selected = -1; clearSat();
+    selected = -1; preview = -1;
+    targetX = targetY = null;
+    clearSat();
     panel.innerHTML = '<p class="solid-panel-empty">Select a discipline to explore its topics.</p>';
+  }
+  function showPreview(i) {
+    if (selected >= 0 || preview === i) return;
+    preview = i;
+    buildSat(i, false);    /* abbreviated names on hover */
+  }
+  function clearPreview() {
+    if (selected >= 0 || preview < 0) return;
+    preview = -1;
+    clearSat();
   }
 
   /* ── Pointer: drag to rotate, tap to select ── */
@@ -311,9 +363,23 @@
     else deselect();
   });
 
+  function approachAngle(cur, target, t) {
+    var d = target - cur;
+    while (d >  Math.PI) d -= 2 * Math.PI;
+    while (d < -Math.PI) d += 2 * Math.PI;
+    return cur + d * t;
+  }
+
   /* ── Render loop ── */
   function frame() {
-    if (!dragging) angY += (selected >= 0 ? 0.0012 : 0.0028);
+    if (dragging) {
+      /* user controls the rotation */
+    } else if (selected >= 0 && targetY !== null) {
+      angY = approachAngle(angY, targetY, 0.1);
+      angX += (targetX - angX) * 0.1;
+    } else {
+      angY += 0.0028;   /* gentle idle spin when nothing is selected */
+    }
 
     var Rv = VERT.map(rot);
     var Pv = Rv.map(proj);
@@ -359,10 +425,54 @@
       }
     });
 
+    /* Faint cross-discipline connections */
+    xEls.forEach(function (x) {
+      var Ra = rot(x.pos), Rb = rot(x.target);
+      var pa = proj(Ra), pb = proj(Rb);
+      x.line.setAttribute('x1', pa[0].toFixed(1)); x.line.setAttribute('y1', pa[1].toFixed(1));
+      x.line.setAttribute('x2', pb[0].toFixed(1)); x.line.setAttribute('y2', pb[1].toFixed(1));
+      var far = (Ra[2] + Rb[2]) / 2;
+      x.line.style.opacity = (Math.max(0, Math.min(1, (far + 1.8) / 2.6)) * 0.5).toFixed(2);
+    });
+
     requestAnimationFrame(frame);
   }
 
-  select(0);
+  /* ── "All topics" hover-tabs ── */
+  var tabsBar  = document.getElementById('topic-tabs-bar');
+  var tabsBody = document.getElementById('topic-tabs-body');
+  function showTab(i) {
+    if (!tabsBar || !tabsBody) return;
+    Array.prototype.forEach.call(tabsBar.children, function (b, j) {
+      b.classList.toggle('active', j === i);
+    });
+    var d = DISC[i], h = '';
+    d.topics.forEach(function (tp) {
+      h += tp.href
+        ? '<span class="topic-chip"><a href="' + esc(tp.href) + '">' + esc(tp.n) + ' ↗</a></span>'
+        : '<span class="topic-chip">' + esc(tp.n) + '</span>';
+      if (tp.sub) tp.sub.forEach(function (st) {
+        h += '<span class="topic-chip topic-chip-sub">' + esc(st.n) + '</span>';
+      });
+    });
+    tabsBody.style.setProperty('--accent', d.color);
+    tabsBody.innerHTML = h;
+  }
+  if (tabsBar && tabsBody) {
+    DISC.forEach(function (d, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'topic-tab';
+      b.textContent = d.name;
+      b.style.setProperty('--accent', d.color);
+      b.addEventListener('mouseenter', function () { showTab(i); });
+      b.addEventListener('focus', function () { showTab(i); });
+      b.addEventListener('click', function () { showTab(i); });
+      tabsBar.appendChild(b);
+    });
+    showTab(0);
+  }
+
   requestAnimationFrame(frame);
 })();
 {% endraw %}

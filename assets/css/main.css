@@ -802,6 +802,13 @@ text.c-icon {
   opacity: 0.85;
 }
 
+/* Faint cross-discipline connections */
+.solid-xlink {
+  stroke-width: 1;
+  stroke-dasharray: 2 4;
+  opacity: 0.4;
+}
+
 /* Side panel */
 .solid-panel {
   flex: 0 0 34%;
@@ -895,6 +902,95 @@ text.c-icon {
     width: 100%;
     max-height: 320px;
   }
+}
+
+/* ===== All-topics hover tabs ===== */
+.solid-list-title {
+  margin-top: 2.5rem;
+}
+
+.topic-tabs {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  margin: 1rem 0 1.5rem;
+}
+
+.topic-tabs-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding: 0.6rem 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.topic-tab {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+}
+
+.topic-tab:hover {
+  color: var(--text);
+}
+
+.topic-tab.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.topic-tabs-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+  padding: 1rem 1.1rem 1.15rem;
+  min-height: 80px;
+  align-content: flex-start;
+}
+
+.topic-chip {
+  font-size: 0.8rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  padding: 0.2rem 0.55rem;
+  line-height: 1.5;
+  transition: border-color 0.15s;
+}
+
+.topic-chip:hover {
+  border-color: var(--accent);
+}
+
+.topic-chip-sub {
+  color: var(--text-muted);
+  border-style: dashed;
+  margin-left: 0.1rem;
+}
+
+.topic-chip-sub::before {
+  content: '↳ ';
+  opacity: 0.6;
+}
+
+.topic-chip a {
+  color: inherit;
+}
+
+.topic-chip a:hover {
+  color: var(--accent);
+  text-decoration: none;
 }
 
 /* ===== Buttons ===== */
