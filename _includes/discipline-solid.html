@@ -1,0 +1,369 @@
+{% comment %}
+  discipline-solid.html
+  A draggable, rotatable cube whose 8 vertices are academic disciplines.
+  Click a vertex -> the discipline's topics render in the side panel and
+  sprout as a small satellite network of dots around that vertex.
+  Vanilla SVG + JS, theme-aware (no libraries).
+{% endcomment %}
+
+<div class="solid-stage" id="solid-stage">
+  <div class="solid-canvas-wrap">
+    <svg id="solid-svg" class="solid-svg" viewBox="0 0 400 410"
+         xmlns="http://www.w3.org/2000/svg" aria-label="Disciplines explorer"></svg>
+    <p class="solid-hint">Drag to rotate &middot; click a discipline</p>
+  </div>
+  <aside class="solid-panel" id="solid-panel" aria-live="polite">
+    <p class="solid-panel-empty">Select a discipline to explore its topics.</p>
+  </aside>
+</div>
+
+<script>
+{% raw %}
+(function () {
+  'use strict';
+
+  var svg   = document.getElementById('solid-svg');
+  var panel = document.getElementById('solid-panel');
+  if (!svg || !panel) return;
+  var NS = 'http://www.w3.org/2000/svg';
+
+  /* ── Data: 8 disciplines, mapped 1:1 to the 8 cube vertices ── */
+  var DISC = [
+    { name: 'Mathematics', color: '#6366f1', note: 'Math 55a/b',
+      topics: [
+        {n:'Group theory', ab:'Grp'},{n:'Linear algebra', ab:'Lin Alg'},
+        {n:'Representation theory', ab:'Rep'},{n:'Real analysis', ab:'Real An'},
+        {n:'Complex analysis', ab:'Cplx An'},{n:'Topology', ab:'Top'},
+        {n:'Algebraic topology', ab:'Alg Top'},{n:'ODEs & PDEs', ab:'ODE/PDE'},
+        {n:'Fourier analysis', ab:'Fourier'},{n:'Measure theory', ab:'Meas'},
+        {n:'Lebesgue integration', ab:'Lebesgue'},{n:'Logic', ab:'Logic'},
+        {n:'Probability', ab:'Prob'},{n:'Computability theory', ab:'Comput'}
+      ] },
+    { name: 'Physics', color: '#0ea5e9',
+      topics: [
+        {n:'Classical mechanics', ab:'Cl Mech'},{n:'Special relativity', ab:'SR'},
+        {n:'Electromagnetism', ab:'E&M'},{n:'Quantum mechanics', ab:'QM'},
+        {n:'Statistical mechanics', ab:'Stat Mech'},{n:'Thermodynamics', ab:'Thermo'},
+        {n:'Solid-state physics', ab:'Solid St'},{n:'Density functional theory', ab:'DFT'},
+        {n:'Perturbation theory', ab:'Pert'},{n:'Non-adiabatic dynamics', ab:'Non-adiab'}
+      ] },
+    { name: 'Computer Science', color: '#10b981',
+      topics: [
+        {n:'Data structures & algorithms', ab:'DSA'},{n:'Computer architecture', ab:'Arch'},
+        {n:'Topic modeling', ab:'Topic Mdl'},{n:'AI alignment & control', ab:'Align'},
+        {n:'Machine learning', ab:'ML'},{n:'Supervised fine-tuning', ab:'SFT'},
+        {n:'Reinforcement learning', ab:'RL'},{n:'Theory of computation', ab:'ToC'},
+        {n:'Computability theory', ab:'Comput'},{n:'Undecidability results', ab:'Undecid'}
+      ] },
+    { name: 'Statistics', color: '#f59e0b',
+      topics: [
+        {n:'Statistical inference', ab:'Inference'},{n:'Probability', ab:'Prob'},
+        {n:'Borel sets', ab:'Borel'},{n:'Measure spaces', ab:'Meas Sp'},
+        {n:'Markov decision processes', ab:'MDP'},{n:'Stochastic processes', ab:'Stoch'},
+        {n:'Lebesgue integration', ab:'Lebesgue'}
+      ] },
+    { name: 'Chemistry', color: '#ef4444',
+      topics: [
+        {n:'Inorganic catalysis', ab:'Inorg Cat'},{n:'Organic chemistry', ab:'Org Chem'},
+        {n:'Organic catalysts', ab:'Org Cat'},{n:'Biochemistry', ab:'Biochem'},
+        {n:'Reductive defluorination', ab:'Defluor', href:'/pfas'},
+        {n:'Computational chemistry', ab:'Comp Chem', sub:[{n:'DFT molecular dynamics', ab:'DFT-MD'},{n:'Perturbation theory', ab:'Pert'}]}
+      ] },
+    { name: 'Biology', color: '#ec4899',
+      topics: [
+        {n:'Molecular genetics', ab:'Mol Gen'},{n:'Transgenic organisms', ab:'Transgenic'},
+        {n:'Cell biology', ab:'Cell Bio'},{n:'Biochemistry', ab:'Biochem'},
+        {n:'CRISPR', ab:'CRISPR'},{n:'Bioinformatics', ab:'Bioinfo'},
+        {n:'Transcriptomics', ab:'Transcr'},{n:'Perturbomics', ab:'Perturb'},
+        {n:'mRNA stability', ab:'mRNA'}
+      ] },
+    { name: 'Economics', color: '#14b8a6',
+      topics: [
+        {n:'Trade economics', ab:'Trade', sub:[{n:'New trade theory', ab:'New Trade'}]},
+        {n:'Heckscher–Ohlin model', ab:'H–O'},{n:'Macroeconomics', ab:'Macro'},
+        {n:'Trade nowcasting', ab:'Nowcast'},{n:'Immigration inflows & analysis', ab:'Immig'},
+        {n:'Roy model', ab:'Roy'},{n:'Mincer model', ab:'Mincer'}
+      ] },
+    { name: 'Philosophy', color: '#a855f7',
+      topics: [
+        {n:'Philosophy of logic', ab:'Logic'},{n:'Philosophy of mathematics', ab:'Math'},
+        {n:'Philosophy of language', ab:'Language'},{n:'Philosophy of life', ab:'Life'}
+      ] }
+  ];
+
+  /* ── Cube geometry ── */
+  var VERT = [
+    [-1,-1,-1],[ 1,-1,-1],[ 1, 1,-1],[-1, 1,-1],
+    [-1,-1, 1],[ 1,-1, 1],[ 1, 1, 1],[-1, 1, 1]
+  ];
+  var EDGES = [];
+  for (var a = 0; a < 8; a++) {
+    for (var b = a + 1; b < 8; b++) {
+      var diff = 0;
+      for (var c = 0; c < 3; c++) if (VERT[a][c] !== VERT[b][c]) diff++;
+      if (diff === 1) EDGES.push([a, b]);
+    }
+  }
+
+  /* ── Projection ── */
+  var CX = 200, CY = 198, S = 108, CAMZ = 4.2;
+  var angX = -0.5, angY = -0.7;
+
+  function rot(p) {
+    var cx = Math.cos(angX), sx = Math.sin(angX);
+    var cy = Math.cos(angY), sy = Math.sin(angY);
+    var x = p[0], y = p[1], z = p[2];
+    var x1 =  x * cy + z * sy;
+    var z1 = -x * sy + z * cy;
+    var y2 =  y * cx - z1 * sx;
+    var z2 =  y * sx + z1 * cx;
+    return [x1, y2, z2];
+  }
+  function proj(p) {
+    var s = CAMZ / (CAMZ - p[2]);
+    return [CX + p[0] * S * s, CY - p[1] * S * s, s];
+  }
+
+  /* ── Build DOM ── */
+  function el(name, cls) {
+    var e = document.createElementNS(NS, name);
+    if (cls) e.setAttribute('class', cls);
+    return e;
+  }
+  var gEdges = el('g'), gSat = el('g'), gNodes = el('g');
+  svg.appendChild(gEdges);
+  svg.appendChild(gSat);
+  svg.appendChild(gNodes);
+
+  var edgeEls = EDGES.map(function () {
+    var l = el('line', 'solid-edge');
+    gEdges.appendChild(l);
+    return l;
+  });
+
+  var vEls = DISC.map(function (d) {
+    var g = el('g', 'solid-vertex');
+    var circ = el('circle', 'solid-vertex-dot');
+    circ.setAttribute('stroke', d.color);
+    var txt = el('text', 'solid-vertex-label');
+    txt.textContent = d.name;
+    g.appendChild(circ);
+    g.appendChild(txt);
+    gNodes.appendChild(g);
+    return { g: g, c: circ, t: txt };
+  });
+
+  /* ── Satellite topic network (rebuilt on selection) ── */
+  var satEls = [];
+  function clearSat() {
+    while (gSat.firstChild) gSat.removeChild(gSat.firstChild);
+    satEls = [];
+  }
+  function norm(v) {
+    var m = Math.hypot(v[0], v[1], v[2]) || 1;
+    return [v[0] / m, v[1] / m, v[2] / m];
+  }
+  function cross(u, v) {
+    return [u[1]*v[2]-u[2]*v[1], u[2]*v[0]-u[0]*v[2], u[0]*v[1]-u[1]*v[0]];
+  }
+  function addDot(r, color, op, href, title) {
+    var dot = el('circle', 'solid-topic-dot');
+    dot.setAttribute('r', r);
+    dot.setAttribute('fill', color);
+    if (op != null) dot.style.opacity = op;
+    if (href) dot.setAttribute('data-href', href);
+    var t = el('title'); t.textContent = title; dot.appendChild(t);
+    gSat.appendChild(dot);
+    return dot;
+  }
+  function addLabel(text, color, sub) {
+    var lbl = el('text', sub ? 'solid-topic-label solid-topic-label-sub' : 'solid-topic-label');
+    lbl.textContent = text;
+    lbl.setAttribute('fill', color);
+    gSat.appendChild(lbl);
+    return lbl;
+  }
+
+  function buildSat(i) {
+    clearSat();
+    var d = DISC[i], base = VERT[i];
+    var out = norm(base);
+    var ref = Math.abs(out[1]) > 0.9 ? [1, 0, 0] : [0, 1, 0];
+    var u = norm(cross(out, ref));
+    var v = cross(out, u);
+    var topics = d.topics, n = topics.length;
+    var RR = 0.66, push = 0.55;
+
+    topics.forEach(function (tp, k) {
+      var th = 2 * Math.PI * k / n + 0.4;
+      var ca = Math.cos(th), sa = Math.sin(th);
+      var pos = [
+        base[0] + out[0]*push + (u[0]*ca + v[0]*sa)*RR,
+        base[1] + out[1]*push + (u[1]*ca + v[1]*sa)*RR,
+        base[2] + out[2]*push + (u[2]*ca + v[2]*sa)*RR
+      ];
+      var line = el('line', 'solid-topic-line');
+      line.setAttribute('stroke', d.color);
+      gSat.appendChild(line);
+      var dot = addDot(3.3, d.color, null, tp.href, tp.n);
+      var lbl = addLabel(tp.ab || tp.n, d.color, false);
+      (function (idx) {
+        dot.addEventListener('mouseenter', function () { highlightRow(idx, true); });
+        dot.addEventListener('mouseleave', function () { highlightRow(idx, false); });
+        if (tp.href) dot.addEventListener('click', function (e) {
+          e.stopPropagation(); window.location.href = tp.href;
+        });
+      })(k);
+      satEls.push({ line: line, dot: dot, lbl: lbl, pos: pos, parent: base });
+
+      if (tp.sub) tp.sub.forEach(function (st, m) {
+        var th2 = th + (m - (tp.sub.length - 1) / 2) * 0.3;
+        var c2 = Math.cos(th2), s2 = Math.sin(th2);
+        var spos = [
+          pos[0] + out[0]*0.22 + (u[0]*c2 + v[0]*s2)*0.26,
+          pos[1] + out[1]*0.22 + (u[1]*c2 + v[1]*s2)*0.26,
+          pos[2] + out[2]*0.22 + (u[2]*c2 + v[2]*s2)*0.26
+        ];
+        var l2 = el('line', 'solid-topic-line');
+        l2.setAttribute('stroke', d.color);
+        l2.style.opacity = 0.28;
+        gSat.appendChild(l2);
+        var sd = addDot(2.1, d.color, 0.8, null, st.n);
+        var sl = addLabel(st.ab || st.n, d.color, true);
+        satEls.push({ line: l2, dot: sd, lbl: sl, pos: spos, parent: pos });
+      });
+    });
+  }
+
+  /* ── Side panel ── */
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+  }
+  function renderPanel(i) {
+    var d = DISC[i], h = '';
+    h += '<p class="solid-panel-subject" style="color:' + d.color + '">' + esc(d.name) + '</p>';
+    if (d.note) h += '<p class="solid-panel-note">' + esc(d.note) + '</p>';
+    h += '<ul class="solid-topics">';
+    d.topics.forEach(function (tp, k) {
+      h += '<li data-k="' + k + '">';
+      h += tp.href
+        ? '<a href="' + esc(tp.href) + '">' + esc(tp.n) + ' ↗</a>'
+        : esc(tp.n);
+      if (tp.sub) {
+        h += '<ul class="solid-sub">';
+        tp.sub.forEach(function (st) { h += '<li>' + esc(st.n) + '</li>'; });
+        h += '</ul>';
+      }
+      h += '</li>';
+    });
+    h += '</ul>';
+    panel.innerHTML = h;
+  }
+  function highlightRow(k, on) {
+    var li = panel.querySelector('li[data-k="' + k + '"]');
+    if (li) li.classList.toggle('hot', on);
+  }
+
+  /* ── Selection ── */
+  var selected = -1;
+  function select(i) { selected = i; buildSat(i); renderPanel(i); }
+  function deselect() {
+    selected = -1; clearSat();
+    panel.innerHTML = '<p class="solid-panel-empty">Select a discipline to explore its topics.</p>';
+  }
+
+  /* ── Pointer: drag to rotate, tap to select ── */
+  var dragging = false, moved = 0, lastX = 0, lastY = 0, lastPv = [];
+
+  function toSvg(e) {
+    var pt = svg.createSVGPoint();
+    pt.x = e.clientX; pt.y = e.clientY;
+    var m = svg.getScreenCTM();
+    if (!m) return [0, 0];
+    var p = pt.matrixTransform(m.inverse());
+    return [p.x, p.y];
+  }
+
+  svg.addEventListener('pointerdown', function (e) {
+    dragging = true; moved = 0;
+    lastX = e.clientX; lastY = e.clientY;
+    try { svg.setPointerCapture(e.pointerId); } catch (_) {}
+  });
+  svg.addEventListener('pointermove', function (e) {
+    if (!dragging) return;
+    var dx = e.clientX - lastX, dy = e.clientY - lastY;
+    lastX = e.clientX; lastY = e.clientY;
+    moved += Math.abs(dx) + Math.abs(dy);
+    angY += dx * 0.008;
+    angX += dy * 0.008;
+    angX = Math.max(-1.35, Math.min(1.35, angX));
+  });
+  svg.addEventListener('pointerup', function (e) {
+    dragging = false;
+    try { svg.releasePointerCapture(e.pointerId); } catch (_) {}
+    if (moved >= 6) return;
+    var sp = toSvg(e), best = -1, bd = 1e9;
+    lastPv.forEach(function (P, i) {
+      var dd = Math.hypot(P[0] - sp[0], P[1] - sp[1]);
+      if (dd < bd) { bd = dd; best = i; }
+    });
+    if (best >= 0 && bd < 22) { (best === selected) ? deselect() : select(best); }
+    else deselect();
+  });
+
+  /* ── Render loop ── */
+  function frame() {
+    if (!dragging) angY += (selected >= 0 ? 0.0012 : 0.0028);
+
+    var Rv = VERT.map(rot);
+    var Pv = Rv.map(proj);
+    lastPv = Pv;
+
+    EDGES.forEach(function (e, i) {
+      var p = Pv[e[0]], q = Pv[e[1]], l = edgeEls[i];
+      l.setAttribute('x1', p[0].toFixed(1)); l.setAttribute('y1', p[1].toFixed(1));
+      l.setAttribute('x2', q[0].toFixed(1)); l.setAttribute('y2', q[1].toFixed(1));
+    });
+
+    /* depth-sort vertices so nearer ones paint last */
+    var order = DISC.map(function (_, i) { return i; })
+                    .sort(function (p, q) { return Rv[p][2] - Rv[q][2]; });
+    order.forEach(function (i) { gNodes.appendChild(vEls[i].g); });
+
+    DISC.forEach(function (d, i) {
+      var P = Pv[i], dep = P[2], ve = vEls[i];
+      var dim = (selected !== -1 && selected !== i);
+      ve.c.setAttribute('cx', P[0].toFixed(1));
+      ve.c.setAttribute('cy', P[1].toFixed(1));
+      ve.c.setAttribute('r', ((selected === i ? 8 : 5.5) * dep).toFixed(1));
+      ve.c.setAttribute('fill', selected === i ? d.color : 'var(--bg-card)');
+      ve.c.style.opacity = dim ? 0.32 : 1;
+      ve.t.setAttribute('x', P[0].toFixed(1));
+      ve.t.setAttribute('y', (P[1] - 11 * dep).toFixed(1));
+      ve.t.style.fontSize = (10.5 * Math.max(dep, 0.82)).toFixed(1) + 'px';
+      ve.t.style.opacity = dim ? 0.3 : 1;
+    });
+
+    satEls.forEach(function (s) {
+      var R = rot(s.pos), rp = proj(R), pp = proj(rot(s.parent));
+      s.line.setAttribute('x1', pp[0].toFixed(1)); s.line.setAttribute('y1', pp[1].toFixed(1));
+      s.line.setAttribute('x2', rp[0].toFixed(1)); s.line.setAttribute('y2', rp[1].toFixed(1));
+      s.dot.setAttribute('cx', rp[0].toFixed(1));  s.dot.setAttribute('cy', rp[1].toFixed(1));
+      if (s.lbl) {
+        var dep = rp[2];
+        s.lbl.setAttribute('x', (rp[0] + 4.5).toFixed(1));
+        s.lbl.setAttribute('y', (rp[1] - 4).toFixed(1));
+        /* fade labels on the far side of the cube so the figure stays legible */
+        s.lbl.style.opacity = (Math.max(0, Math.min(1, (R[2] + 1.6) / 2.2)) * 0.95).toFixed(2);
+        s.lbl.style.fontSize = (7.5 * Math.max(dep, 0.85)).toFixed(1) + 'px';
+      }
+    });
+
+    requestAnimationFrame(frame);
+  }
+
+  select(0);
+  requestAnimationFrame(frame);
+})();
+{% endraw %}
+</script>

@@ -5,7 +5,7 @@ title: Music
 # Music
 
 <div class="content-container" markdown="1">
-I am incredibly passionate about performing and disseminating Classical music, and I specialize in performance of Romantic-era repertoire. A selected list of my recent pianistic repertoire is indicated below.
+I am passionate about performing and disseminating Classical music, and I specialize in performance of Romantic-era repertoire – although I have beeen most recently involved in chamber ensembles that perform music of all eras. A selected list of my recent pianistic repertoire is indicated below.
 </div>
 
 <div class="content-container">
