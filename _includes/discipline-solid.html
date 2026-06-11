@@ -25,8 +25,8 @@
   'use strict';
 
   var svg   = document.getElementById('solid-svg');
-  var panel = document.getElementById('solid-panel');
-  if (!svg || !panel) return;
+  var panel = document.getElementById('solid-panel'); /* optional */
+  if (!svg) return;
   var NS = 'http://www.w3.org/2000/svg';
 
   /* ── Data: 8 disciplines, mapped 1:1 to the 8 cube vertices ── */
@@ -265,6 +265,7 @@
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
   }
   function renderPanel(i) {
+    if (!panel) return;
     var d = DISC[i], h = '';
     h += '<p class="solid-panel-subject" style="color:' + d.color + '">' + esc(d.name) + '</p>';
     if (d.note) h += '<p class="solid-panel-note">' + esc(d.note) + '</p>';
@@ -289,6 +290,7 @@
     panel.innerHTML = h;
   }
   function highlightRow(k, on) {
+    if (!panel) return;
     var li = panel.querySelector('li[data-k="' + k + '"]');
     if (li) li.classList.toggle('hot', on);
   }
@@ -316,7 +318,7 @@
     selected = -1; preview = -1;
     targetX = targetY = null;
     clearSat();
-    panel.innerHTML = '<p class="solid-panel-empty">Select a discipline to explore its topics.</p>';
+    if (panel) panel.innerHTML = '<p class="solid-panel-empty">Select a discipline to explore its topics.</p>';
   }
   function showPreview(i) {
     if (selected >= 0 || preview === i) return;
