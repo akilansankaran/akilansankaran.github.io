@@ -713,7 +713,7 @@ text.c-icon {
 /* ===== Disciplines Solid (rotatable cube explorer) ===== */
 .solid-stage {
   display: flex;
-  gap: 1.5rem;
+  gap: 3rem;
   align-items: stretch;
   margin: 1.25rem 0 2.5rem;
 }

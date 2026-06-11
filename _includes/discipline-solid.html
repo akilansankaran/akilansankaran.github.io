@@ -11,9 +11,6 @@
     <svg id="solid-svg" class="solid-svg" viewBox="0 0 400 410"
          xmlns="http://www.w3.org/2000/svg" aria-label="Disciplines explorer"></svg>
   </div>
-  <aside class="solid-panel" id="solid-panel" aria-live="polite">
-    <p class="solid-panel-empty">Select a discipline to explore its topics.</p>
-  </aside>
 </div>
 
 <h2 class="solid-list-title">All topics</h2>
@@ -36,48 +33,49 @@
   var DISC = [
     { name: 'Mathematics', color: '#6366f1', note: 'Math 55a/b',
       topics: [
-        {n:'Group theory', ab:'Grp'},{n:'Linear algebra', ab:'Lin Alg'},
-        {n:'Representation theory', ab:'Rep'},{n:'Real analysis', ab:'Real An'},
+        {n:'Group theory', ab:'Grp'},{n:'Linear algebra', ab:'Lin. Alg.'},
+        {n:'Representation theory', ab:'Rep. Thy.'},{n:'Real analysis', ab:'Real An'},
         {n:'Complex analysis', ab:'Cplx An'},{n:'Topology', ab:'Top'},
         {n:'Algebraic topology', ab:'Alg Top'},{n:'ODEs & PDEs', ab:'ODE/PDE'},
         {n:'Fourier analysis', ab:'Fourier', x:[1]},{n:'Measure theory', ab:'Meas', x:[3]},
         {n:'Lebesgue integration', ab:'Lebesgue', x:[3]},{n:'Logic', ab:'Logic'},
-        {n:'Probability', ab:'Prob'},{n:'Computability theory', ab:'Comput'}
+        {n:'Probability', ab:'Prob'},{n:'Computability theory', ab:'Comput. Thy.'}
       ] },
     { name: 'Physics', color: '#0ea5e9',
       topics: [
-        {n:'Classical mechanics', ab:'Cl Mech'},{n:'Special relativity', ab:'SR'},
+        {n:'Classical mechanics', ab:'Classical Mech.'},{n:'Special relativity', ab:'SR'},
         {n:'Electromagnetism', ab:'E&M'},{n:'Quantum mechanics', ab:'QM'},
-        {n:'Statistical mechanics', ab:'Stat Mech'},{n:'Thermodynamics', ab:'Thermo'},
+        {n:'Statistical mechanics', ab:'Stat Mech'},{n:'Thermodynamics', ab:'Thermo.'},
         {n:'Solid-state physics', ab:'Solid St'},{n:'Density functional theory', ab:'DFT', x:[4]},
-        {n:'Perturbation theory', ab:'Pert'},{n:'Non-adiabatic dynamics', ab:'Non-adiab'},
+        {n:'Defect physics', ab:'Defect Phys.'},{n:'Non-adiabatic dynamics', ab:'Non-adiab'},
         {n:'Fluid dynamics', ab:'Fluids', x:[0]}
       ] },
     { name: 'Computer Science', color: '#10b981',
       topics: [
         {n:'Data structures & algorithms', ab:'DSA'},{n:'Computer architecture', ab:'Arch'},
-        {n:'Topic modeling', ab:'Topic Mdl'},{n:'AI alignment & control', ab:'Align'},
+        {n:'BLAS', ab:'BLAS'},{n:'Topic modeling', ab:'Topic Mdl'},
+        {n:'AI alignment & control', ab:'Alignment'},
         {n:'Machine learning', ab:'ML'},{n:'Supervised fine-tuning', ab:'SFT'},
-        {n:'Reinforcement learning', ab:'RL'},{n:'Theory of computation', ab:'ToC'},
-        {n:'Computability theory', ab:'Comput'},{n:'Undecidability results', ab:'Undecid'}
+        {n:'Reinforcement learning', ab:'RL'},{n:'Theory of computation', ab:'Thy. of Comp.'},
+        {n:'Undecidability results', ab:'Undecidability'}
       ] },
     { name: 'Statistics', color: '#f59e0b',
       topics: [
         {n:'Statistical inference', ab:'Inference'},{n:'Probability', ab:'Prob'},
         {n:'Borel sets', ab:'Borel'},{n:'Measure spaces', ab:'Meas Sp', x:[0]},
-        {n:'Markov decision processes', ab:'MDP'},{n:'Stochastic processes', ab:'Stoch'},
+        {n:'Markov decision processes', ab:'Markov DP'},{n:'Stochastic processes', ab:'Stoch.'},
         {n:'Lebesgue integration', ab:'Lebesgue', x:[0]}
       ] },
     { name: 'Chemistry', color: '#ef4444',
       topics: [
-        {n:'Inorganic catalysis', ab:'Inorg Cat'},{n:'Organic chemistry', ab:'Org Chem', x:[5]},
-        {n:'Organic catalysts', ab:'Org Cat'},{n:'Biochemistry', ab:'Biochem', x:[5]},
-        {n:'Reductive defluorination', ab:'Defluor', href:'/pfas'},
+        {n:'Inorganic catalysis', ab:'Inorg Cat'},{n:'Organic chemistry', ab:'Orgo', x:[5]},
+        {n:'Organic catalysts', ab:'Org. Catalysis'},{n:'Biochemistry', ab:'Biochem.', x:[5]},
+        {n:'Reductive defluorination', ab:'Defluorination', href:'/pfas', sub:[{n:'PFAS', ab:'PFAS', href:'/pfas'}]},
         {n:'Computational chemistry', ab:'Comp Chem', x:[1], sub:[{n:'DFT molecular dynamics', ab:'DFT-MD'},{n:'Perturbation theory', ab:'Pert'}]}
       ] },
     { name: 'Biology', color: '#ec4899',
       topics: [
-        {n:'Molecular genetics', ab:'Mol Gen'},{n:'Transgenic organisms', ab:'Transgenic'},
+        {n:'Molecular genetics', ab:'Mol. Genetics'},{n:'Transgenic organisms', ab:'Transgenic'},
         {n:'Cell biology', ab:'Cell Bio'},{n:'Biochemistry', ab:'Biochem', x:[4]},
         {n:'CRISPR', ab:'CRISPR'},{n:'Bioinformatics', ab:'Bioinfo'},
         {n:'Transcriptomics', ab:'Transcr'},{n:'Perturbomics', ab:'Perturb'},
@@ -87,13 +85,13 @@
       topics: [
         {n:'Trade economics', ab:'Trade', sub:[{n:'New trade theory', ab:'New Trade'}]},
         {n:'Heckscher–Ohlin model', ab:'H–O'},{n:'Macroeconomics', ab:'Macro'},
-        {n:'Trade nowcasting', ab:'Nowcast'},{n:'Immigration inflows & analysis', ab:'Immig'},
+        {n:'Trade nowcasting', ab:'Nowcast'},{n:'Immigration inflows & analysis', ab:'Immig. flows'},
         {n:'Roy model', ab:'Roy'},{n:'Mincer model', ab:'Mincer'}
       ] },
     { name: 'Philosophy', color: '#a855f7',
       topics: [
-        {n:'Philosophy of logic', ab:'Logic'},{n:'Philosophy of mathematics', ab:'Math'},
-        {n:'Philosophy of language', ab:'Language'},{n:'Philosophy of life', ab:'Life'}
+        {n:'Philosophy of logic', ab:'of Logic'},{n:'Philosophy of mathematics', ab:'of Math.'},
+        {n:'Philosophy of language', ab:'of Lang.'},{n:'Philosophy of life', ab:'of Life'}
       ] }
   ];
 
@@ -252,7 +250,10 @@
         l2.setAttribute('stroke', d.color);
         l2.style.opacity = 0.28;
         gSat.appendChild(l2);
-        var sd = addDot(2.1, d.color, 0.8, null, st.n);
+        var sd = addDot(2.1, d.color, 0.8, st.href, st.n);
+        if (st.href) sd.addEventListener('click', function (e) {
+          e.stopPropagation(); window.location.href = st.href;
+        });
         var sl = addLabel(labelText(st, full), d.color, true);
         satEls.push({ line: l2, dot: sd, lbl: sl, pos: spos, parent: pos });
       });
@@ -275,7 +276,11 @@
         : esc(tp.n);
       if (tp.sub) {
         h += '<ul class="solid-sub">';
-        tp.sub.forEach(function (st) { h += '<li>' + esc(st.n) + '</li>'; });
+        tp.sub.forEach(function (st) {
+          h += '<li>' + (st.href
+            ? '<a href="' + esc(st.href) + '">' + esc(st.n) + ' ↗</a>'
+            : esc(st.n)) + '</li>';
+        });
         h += '</ul>';
       }
       h += '</li>';
@@ -421,7 +426,7 @@
         s.lbl.setAttribute('y', (rp[1] - 4).toFixed(1));
         /* fade labels on the far side of the cube so the figure stays legible */
         s.lbl.style.opacity = (Math.max(0, Math.min(1, (R[2] + 1.6) / 2.2)) * 0.95).toFixed(2);
-        s.lbl.style.fontSize = (7.5 * Math.max(dep, 0.85)).toFixed(1) + 'px';
+        s.lbl.style.fontSize = (6.9 * Math.max(dep, 0.85)).toFixed(1) + 'px';
       }
     });
 
@@ -452,7 +457,9 @@
         ? '<span class="topic-chip"><a href="' + esc(tp.href) + '">' + esc(tp.n) + ' ↗</a></span>'
         : '<span class="topic-chip">' + esc(tp.n) + '</span>';
       if (tp.sub) tp.sub.forEach(function (st) {
-        h += '<span class="topic-chip topic-chip-sub">' + esc(st.n) + '</span>';
+        h += st.href
+          ? '<span class="topic-chip topic-chip-sub"><a href="' + esc(st.href) + '">' + esc(st.n) + ' ↗</a></span>'
+          : '<span class="topic-chip topic-chip-sub">' + esc(st.n) + '</span>';
       });
     });
     tabsBody.style.setProperty('--accent', d.color);
