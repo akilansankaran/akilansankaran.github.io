@@ -3,7 +3,9 @@ layout: default
 title: Home
 ---
 
-<div class="hero">
+<div class="hero hero-split">
+
+  <div class="hero-main">
 
   <h1 class="hero-name">Akilan Sankaran</h1>
   <p class="hero-tagline">Harvard</p>
@@ -18,13 +20,17 @@ title: Home
   
   <p class = "hero-bio">Outside of technical scientific work, I enjoy exploring economics and political philosophy, most recently through <a href="https://www.charlesrivereconomicslabs.org/">Charles River Economics Labs</a> and Harvard's <a href="https://iop.harvard.edu/">Institute of Politics</a>. I am also an avid <a href="https://www.youtube.com/channel/UC3BUUIJfTgrYauJq0PTKlng">Classical pianist</a> and distance runner.</p>
 
-  {% include morph-anim.html %}
-
   <div class="hero-links">
     <a href="/research" class="btn-primary">Research</a>
     <a href="/coursework" class="btn-secondary">Background</a>
     <a href="mailto:akilansankaran@college.harvard.edu" class="btn-secondary">Email</a>
     <a href="https://linkedin.com/in/akilan-sankaran/" class="btn-secondary" target="_blank" rel="noopener noreferrer">LinkedIn</a>
   </div>
+
+  </div>
+
+  <aside class="hero-side research-anim-side">
+    {% include morph-anim.html %}
+  </aside>
 
 </div>
