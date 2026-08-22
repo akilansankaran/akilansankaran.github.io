@@ -144,8 +144,10 @@
     if (cls) e.setAttribute('class', cls);
     return e;
   }
-  var gEdges = el('g'), gXlinks = el('g'), gSat = el('g'), gNodes = el('g');
+  var gEdges = el('g'), gRadial = el('g'), gHints = el('g'), gXlinks = el('g'), gSat = el('g'), gNodes = el('g');
   svg.appendChild(gEdges);
+  svg.appendChild(gRadial);
+  svg.appendChild(gHints);
   svg.appendChild(gXlinks);
   svg.appendChild(gSat);
   svg.appendChild(gNodes);
@@ -153,6 +155,21 @@
   var edgeEls = EDGES.map(function () {
     var l = el('line', 'solid-edge');
     gEdges.appendChild(l);
+    return l;
+  });
+
+  /* Radial spokes: centre -> every vertex and every edge midpoint */
+  var radialTargets = VERT.slice();
+  EDGES.forEach(function (e) {
+    radialTargets.push([
+      (VERT[e[0]][0] + VERT[e[1]][0]) / 2,
+      (VERT[e[0]][1] + VERT[e[1]][1]) / 2,
+      (VERT[e[0]][2] + VERT[e[1]][2]) / 2
+    ]);
+  });
+  var radialEls = radialTargets.map(function () {
+    var l = el('line', 'solid-radial');
+    gRadial.appendChild(l);
     return l;
   });
 
@@ -172,7 +189,7 @@
   });
 
   /* ── Satellite topic network (rebuilt on selection/hover) ── */
-  var satEls = [], xEls = [];
+  var satEls = [], xEls = [], hintEls = [];
   function clearSat() {
     while (gSat.firstChild) gSat.removeChild(gSat.firstChild);
     while (gXlinks.firstChild) gXlinks.removeChild(gXlinks.firstChild);
@@ -189,6 +206,48 @@
   }
   function cross(u, v) {
     return [u[1]*v[2]-u[2]*v[1], u[2]*v[0]-u[0]*v[2], u[0]*v[1]-u[1]*v[0]];
+  }
+
+  /* Tiny, label-less default hints: every discipline's topics as faint dots,
+     so the idle cube quietly signals there's content around each vertex. */
+  function buildHints() {
+    DISC.forEach(function (d, i) {
+      var base = VERT[i], out = norm(base);
+      var ref = Math.abs(out[1]) > 0.9 ? [1, 0, 0] : [0, 1, 0];
+      var u = norm(cross(out, ref));
+      var v = cross(out, u);
+      var topics = d.topics, n = topics.length;
+      var RR = 0.66, push = 0.55;
+      topics.forEach(function (tp, k) {
+        var th = 2 * Math.PI * k / n + 0.4;
+        var ca = Math.cos(th), sa = Math.sin(th);
+        var pos = [
+          base[0] + out[0]*push + (u[0]*ca + v[0]*sa)*RR,
+          base[1] + out[1]*push + (u[1]*ca + v[1]*sa)*RR,
+          base[2] + out[2]*push + (u[2]*ca + v[2]*sa)*RR
+        ];
+        var dot = el('circle', 'solid-hint-dot');
+        dot.setAttribute('r', 1.3);
+        dot.setAttribute('fill', d.color);
+        gHints.appendChild(dot);
+        hintEls.push({ dot: dot, pos: pos });
+
+        if (tp.sub) tp.sub.forEach(function (st, m) {
+          var th2 = th + (m - (tp.sub.length - 1) / 2) * 0.3;
+          var c2 = Math.cos(th2), s2 = Math.sin(th2);
+          var spos = [
+            pos[0] + out[0]*0.22 + (u[0]*c2 + v[0]*s2)*0.26,
+            pos[1] + out[1]*0.22 + (u[1]*c2 + v[1]*s2)*0.26,
+            pos[2] + out[2]*0.22 + (u[2]*c2 + v[2]*s2)*0.26
+          ];
+          var sd = el('circle', 'solid-hint-dot');
+          sd.setAttribute('r', 0.9);
+          sd.setAttribute('fill', d.color);
+          gHints.appendChild(sd);
+          hintEls.push({ dot: sd, pos: spos });
+        });
+      });
+    });
   }
   function addDot(r, color, op, href, title) {
     var dot = el('circle', 'solid-topic-dot');
@@ -438,7 +497,7 @@
         s.lbl.setAttribute('y', (rp[1] - 4).toFixed(1));
         /* fade labels on the far side of the cube so the figure stays legible */
         s.lbl.style.opacity = (Math.max(0, Math.min(1, (R[2] + 1.6) / 2.2)) * 0.95).toFixed(2);
-        s.lbl.style.fontSize = (6.9 * Math.max(dep, 0.85)).toFixed(1) + 'px';
+        s.lbl.style.fontSize = (6.2 * Math.max(dep, 0.85)).toFixed(1) + 'px';
       }
     });
 
@@ -451,6 +510,27 @@
       var far = (Ra[2] + Rb[2]) / 2;
       x.line.style.opacity = (Math.max(0, Math.min(1, (far + 1.8) / 2.6)) * 0.5).toFixed(2);
     });
+
+    /* Radial spokes from the projected cube centre to vertices & edge midpoints */
+    var cp = proj(rot([0, 0, 0]));
+    radialEls.forEach(function (rl, i) {
+      var Rt = rot(radialTargets[i]), pt = proj(Rt);
+      rl.setAttribute('x1', cp[0].toFixed(1)); rl.setAttribute('y1', cp[1].toFixed(1));
+      rl.setAttribute('x2', pt[0].toFixed(1)); rl.setAttribute('y2', pt[1].toFixed(1));
+      rl.style.opacity = (Math.max(0, Math.min(1, (Rt[2] + 1.7) / 2.6)) * 0.26).toFixed(2);
+    });
+
+    /* Tiny label-less hints — only while nothing is selected/previewed */
+    var showHints = (selected < 0 && preview < 0);
+    gHints.style.display = showHints ? '' : 'none';
+    if (showHints) {
+      hintEls.forEach(function (h) {
+        var R = rot(h.pos), rp = proj(R);
+        h.dot.setAttribute('cx', rp[0].toFixed(1));
+        h.dot.setAttribute('cy', rp[1].toFixed(1));
+        h.dot.style.opacity = (Math.max(0, Math.min(1, (R[2] + 1.6) / 2.2)) * 0.4).toFixed(2);
+      });
+    }
 
     requestAnimationFrame(frame);
   }
@@ -492,6 +572,7 @@
     showTab(0);
   }
 
+  buildHints();
   requestAnimationFrame(frame);
 })();
 {% endraw %}
