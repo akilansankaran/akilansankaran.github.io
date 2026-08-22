@@ -98,7 +98,7 @@ title: Music
         <span class="era-index">III</span>
         <div>
           <h2 class="era-name">Romantic</h2>
-          <span class="era-years">c. 1820 – 1910 · specialty</span>
+          <span class="era-years">c. 1820 – 1910</span>
         </div>
       </div>
       <span class="era-toggle" aria-hidden="true"></span>
