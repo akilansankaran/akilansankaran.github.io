@@ -346,17 +346,6 @@
   var iconOffset = 0;
   var lastTs     = null;
 
-  /* Freeze all motion while the pointer/focus is over the animation,
-     so the orbiting icons become easy to click. */
-  var paused = false;
-  var svgEl  = document.querySelector('.hero-anim .c-svg') || document.querySelector('.c-svg');
-  if (svgEl) {
-    svgEl.addEventListener('mouseenter', function () { paused = true; });
-    svgEl.addEventListener('mouseleave', function () { paused = false; });
-    svgEl.addEventListener('focusin',    function () { paused = true; });
-    svgEl.addEventListener('focusout',   function () { paused = false; });
-  }
-
   function easeInOut(t) {
     return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
   }
@@ -379,13 +368,6 @@
     if (!lastTs) lastTs = ts;
     var dt = Math.min(ts - lastTs, 100);
     lastTs = ts;
-
-    /* While paused, hold every icon perfectly still (still schedule frames
-       so motion resumes smoothly on mouseleave). */
-    if (paused) {
-      requestAnimationFrame(tick);
-      return;
-    }
 
     iconOffset = (iconOffset + dt / ORBIT_MS) % 1;
 
