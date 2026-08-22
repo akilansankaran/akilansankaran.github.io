@@ -1,2 +1,16 @@
 .claude/
 policy/
+
+# Jekyll build output & caches (GitHub Pages rebuilds these server-side)
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Local Bundler / gems (only if you preview locally)
+vendor/
+.bundle/
+Gemfile.lock
+
+# macOS
+.DS_Store
