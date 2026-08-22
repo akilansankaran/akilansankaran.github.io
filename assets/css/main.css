@@ -1,13 +1,19 @@
 /* ===== Fonts ===== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* Primary editorial serif — Anthropic-leaning, Times New Roman fallback */
+:root {
+  --font-serif: 'Source Serif 4', 'Times New Roman', Times, Georgia, serif;
+  --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
 
 /* ===== Design Tokens ===== */
 :root {
   --bg: #f9f9f8;
   --bg-card: #ffffff;
   --bg-nav: rgba(249, 249, 248, 0.88);
-  --text: #111118;
-  --text-muted: #71717a;
+  --text: #000000;
+  --text-muted: #52525b;
   --border: #e4e4e7;
   --border-hover: #c4c4c7;
   --link: #2563eb;
@@ -46,7 +52,7 @@ html, body {
   padding: 0;
   background-color: var(--bg);
   color: var(--text);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-serif);
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -160,7 +166,7 @@ main.container {
 /* ===== Typography ===== */
 h1, h2, h3, h4, h5, h6 {
   color: var(--text);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-serif);
   transition: color 0.3s ease;
 }
 
@@ -306,6 +312,48 @@ code, pre {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ===== Split hero: bio text + side constellation ===== */
+.hero-split {
+  max-width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+}
+
+.hero-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 640px;
+}
+
+.hero-side {
+  flex: 0 0 236px;
+  position: sticky;
+  top: calc(var(--nav-height) + 2rem);
+  margin-top: 4.5rem; /* align with hero-name baseline */
+  opacity: 0;
+  animation: heroFadeUp 0.5s ease 0.3s forwards;
+}
+
+.hero-side .hero-anim {
+  margin: 0;
+}
+
+@media (max-width: 820px) {
+  .hero-split {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .hero-side {
+    position: static;
+    margin-top: 1rem;
+    flex: none;
+    width: 100%;
+    align-self: center;
+    max-width: 360px;
+  }
+}
+
 /* ===== Hero Constellation ===== */
 .hero-anim {
   margin: 2rem 0 2.5rem;
@@ -331,7 +379,7 @@ code, pre {
 
 .morph-label {
   flex: 0 0 auto;
-  font-family: 'Inter', 'system-ui', sans-serif;
+  font-family: var(--font-serif);
   font-size: 0.875rem;
   font-weight: 500;
   color: #111;
@@ -536,7 +584,7 @@ code, pre {
 text.c-icon {
   fill: currentColor;
   font-size: 12px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-serif);
   font-weight: 600;
   text-anchor: middle;
   dominant-baseline: central;
@@ -1186,68 +1234,203 @@ main.container > h1:first-child {
   margin: 0;
 }
 
-/* ===== Repertoire (Music) ===== */
-.repertoire-box {
+/* ===== Music: editorial era cards ===== */
+.music-hero {
+  padding: 2.5rem 0 2rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+
+.music-hero-motif {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 1.35rem;
+  color: var(--text-muted);
+  opacity: 0.65;
+  margin-bottom: 0.75rem;
+}
+
+.music-hero-motif .mh-note {
+  animation: mhFloat 3.6s ease-in-out infinite;
+}
+.music-hero-motif .mh-note:nth-child(2) { animation-delay: 0.5s; }
+.music-hero-motif .mh-note:nth-child(3) { animation-delay: 1s; }
+
+@keyframes mhFloat {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50%      { transform: translateY(-4px); opacity: 0.85; }
+}
+
+.music-hero-title {
+  margin: 0 0 0.75rem;
+}
+
+.music-hero-lede {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 640px;
+  margin: 0;
+}
+
+.era-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.era-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  margin: 0.5rem 0;
+  border-left: 3px solid var(--border-hover);
+  border-radius: var(--radius);
   cursor: pointer;
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
   overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.repertoire-box:hover {
-  box-shadow: var(--shadow);
-  border-color: var(--border-hover);
+.era-card:hover {
+  box-shadow: var(--shadow-md);
+  border-left-color: var(--text);
 }
 
-.repertoire-header {
-  padding: 0.875rem 1.25rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--text);
+.era-card.expanded {
+  border-left-color: var(--text);
+}
+
+.era-head {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.4rem;
   user-select: none;
 }
 
-.repertoire-header::after {
-  content: '+';
-  font-size: 1.1rem;
-  font-weight: 300;
+.era-head-main {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.era-index {
+  font-size: 1.4rem;
+  font-weight: 600;
   color: var(--text-muted);
-  flex-shrink: 0;
+  font-variant-numeric: oldstyle-nums;
+  line-height: 1;
+  min-width: 1.75rem;
+  opacity: 0.7;
+}
+
+.era-name {
+  font-size: 1.1875rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.era-years {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+.era-count {
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
   margin-left: 0.5rem;
+  white-space: nowrap;
 }
 
-.repertoire-box.expanded .repertoire-header::after {
-  content: '−';
+.era-toggle {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  margin-left: 1rem;
 }
 
-.repertoire-content {
+.era-toggle::before,
+.era-toggle::after {
+  content: '';
+  position: absolute;
+  background: var(--text-muted);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.era-toggle::before { top: 6px; left: 0; width: 14px; height: 2px; }
+.era-toggle::after  { left: 6px; top: 0; width: 2px; height: 14px; }
+
+.era-card.expanded .era-toggle::after { opacity: 0; transform: rotate(90deg); }
+
+.era-body {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
-  padding: 0 1.25rem;
+  transition: max-height 0.35s ease;
+  padding: 0 1.4rem;
 }
 
-.repertoire-box.expanded > .repertoire-content {
-  max-height: 2000px;
-  padding: 0 1.25rem 1rem;
+.era-card.expanded .era-body {
+  max-height: 3000px;
+  padding: 0 1.4rem 1.3rem;
 }
 
-.repertoire-content ul {
-  margin: 0.25rem 0 0.5rem;
-  padding-left: 1.25rem;
+.composer {
+  padding-top: 1rem;
+  margin-top: 1rem;
+  border-top: 1px solid var(--border);
 }
 
-.repertoire-content li {
-  margin: 0.2rem 0;
-  font-size: 0.875rem;
-  color: var(--text);
+.composer:first-child {
+  border-top: none;
+  margin-top: 0;
+}
+
+.composer-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 0.4rem;
+  letter-spacing: 0.005em;
+}
+
+.piece-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  list-style: none;
+}
+
+.piece-list > li {
+  position: relative;
+  margin: 0.3rem 0;
+  font-size: 0.9375rem;
   line-height: 1.55;
+  color: var(--text);
+  padding-left: 0.35rem;
+}
+
+.piece-list > li::before {
+  content: '♪';
+  position: absolute;
+  left: -1.05rem;
+  color: var(--text-muted);
+  opacity: 0.45;
+  font-size: 0.8rem;
+  top: 0.1rem;
+}
+
+.piece-note {
+  color: var(--text-muted);
+  font-size: 0.85em;
+  font-style: italic;
 }
 
 /* ===== Feynman Quote ===== */
