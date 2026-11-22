@@ -1584,8 +1584,21 @@ main.container > h1:first-child {
 }
 
 /* ===== Positions column (homepage, right side) ===== */
+main.container:has(.hero-with-nav) {
+  max-width: 1280px;
+}
+
+.hero-with-nav {
+  gap: 3.5rem;
+}
+
+.hero-with-nav .hero-body {
+  flex: 0 1 780px;
+}
+
 .hero-positions {
-  flex: 0 0 210px;
+  flex: 0 0 250px;
+  margin-left: auto;
   position: sticky;
   top: calc(var(--nav-height) + 2rem);
   margin-top: 5rem;
@@ -1671,4 +1684,9 @@ main.container > h1:first-child {
     flex-basis: auto;
     width: 100%;
   }
+}
+
+/* Larger wheel on the homepage */
+.hero-with-nav .c-svg {
+  max-width: 580px;
 }
