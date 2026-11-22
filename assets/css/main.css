@@ -1688,5 +1688,9 @@ main.container:has(.hero-with-nav) {
 
 /* Larger wheel on the homepage */
 .hero-with-nav .c-svg {
-  max-width: 580px;
+  max-width: 500px;
+}
+
+.hero-with-nav .c-node {
+  transform: scale(0.85);
 }
