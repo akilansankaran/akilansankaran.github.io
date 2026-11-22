@@ -3,8 +3,8 @@
   Renders the morphing-shape constellation animation.
 
   Optional parameter:
-    exclude  — string "0"–"6": omit that node so only 6 icons appear.
-               Omit the parameter entirely for all 7 icons.
+    exclude  — string "0"–"8": omit that node so only 8 icons appear.
+               Omit the parameter entirely for all 9 icons.
 
   Node index → research page mapping:
     0 = nt (Number Theory)
@@ -14,6 +14,8 @@
     4 = flylab (Drosophila)
     5 = hydrodynamics (Hydrodynamics)
     6 = firstproof (First Proof)
+    7 = lila (ML for Science at Lila)
+    8 = rh-viz (Riemann Hypothesis remarks)
 {% endcomment %}
 
 {% if include.exclude %}
@@ -24,7 +26,7 @@
 
 {% comment %}Build list of active node indices as a string for JS{% endcomment %}
 {% assign _active_parts = "" | split: "" %}
-{% for _i in (0..6) %}
+{% for _i in (0..8) %}
   {% unless _i == _ex %}
     {% assign _active_parts = _active_parts | push: _i %}
   {% endunless %}
@@ -58,7 +60,7 @@
     <polygon id="morph-outline" class="c-ring-poly" points=""/>
 
     <!-- Spokes: one per active node, keyed by original node index -->
-    {% for _i in (0..6) %}
+    {% for _i in (0..8) %}
       {% unless _i == _ex %}
         <line id="morph-spoke-{{ _i }}" class="c-spoke" x1="200" y1="160" x2="200" y2="45"/>
       {% endunless %}
@@ -143,6 +145,27 @@
         <circle class="c-node-bg" cx="0" cy="0" r="22"/>
         <rect class="c-icon-qed" x="-11" y="-5" width="9" height="9" rx="1"/>
         <text class="c-icon" x="5" y="1" style="font-size:11px;">𝒜</text>
+      </a>
+    </g>
+    {% endunless %}
+
+    {% unless 7 == _ex %}
+    <g id="morph-node-7" transform="translate(200,45)">
+      <a href="/lila" class="c-node">
+        <circle class="c-node-bg" cx="0" cy="0" r="22"/>
+        <path class="c-icon-path"
+          d="M-3,-11 L3,-11 M-2,-11 L-2,-3 L-9,9 Q-10,11 -8,11 L8,11 Q10,11 9,9 L2,-3 L2,-11"/>
+        <circle class="c-icon-dot" cx="-2" cy="6" r="1.8"/>
+        <circle class="c-icon-dot" cx="3" cy="3" r="1.2"/>
+      </a>
+    </g>
+    {% endunless %}
+
+    {% unless 8 == _ex %}
+    <g id="morph-node-8" transform="translate(200,45)">
+      <a href="/rh-viz/" class="c-node">
+        <circle class="c-node-bg" cx="0" cy="0" r="22"/>
+        <text class="c-icon" x="0" y="1">ζ</text>
       </a>
     </g>
     {% endunless %}
@@ -299,7 +322,9 @@
     'PFAS',                  /* 3 */
     'Transgenic Flies',      /* 4 */
     'Hydrodynamics',         /* 5 */
-    'First Proof'            /* 6 */
+    'First Proof',           /* 6 */
+    'Lila',                  /* 7 */
+    'Riemann Hypothesis'     /* 8 */
   ];
   var label   = document.getElementById('morph-label');
   /* Typewriter only on main/research pages, not inside the aside on subpages */

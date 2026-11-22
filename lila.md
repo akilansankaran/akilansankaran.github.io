@@ -5,6 +5,9 @@ title: ML for Science (Lila)
 
 <div class="research-header-layout">
 <h1>ML for Science at Lila</h1>
+<aside class="research-anim-side">
+  {% include morph-anim.html exclude="7" %}
+</aside>
 </div>
 
 <div class="content-container" markdown="1">
