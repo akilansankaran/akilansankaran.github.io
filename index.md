@@ -24,13 +24,14 @@ title: Home
 
   {% include morph-anim.html %}
 
-  </div>
-
-  <aside class="hero-nav">
+  <div class="hero-links">
     <a href="/research" class="btn-primary">Research</a>
     <a href="/coursework" class="btn-secondary">Background</a>
     <a href="mailto:akilansankaran@college.harvard.edu" class="btn-secondary">Email</a>
     <a href="https://linkedin.com/in/akilan-sankaran/" class="btn-secondary" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-  </aside>
+  </div>
+
+  </div>
+
 
 </div>

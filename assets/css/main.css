@@ -1555,6 +1555,7 @@ main.container > h1:first-child {
   color: var(--text);
   font-family: var(--font-serif);
   font-size: 0.9375rem;
+  font-weight: 600;
   line-height: 1.6;
   text-decoration: none;
   opacity: 0;
