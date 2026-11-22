@@ -8,7 +8,7 @@ title: Home
   <div class="hero-body">
 
   <h1 class="hero-name">Akilan Sankaran</h1>
-  <p class="hero-tagline">Harvard</p>
+  <p class="hero-tagline">Sophomore at Harvard</p>
 
   <div class="get-in-touch">
     <p class="git-email">akilansankaran [at] college [dot] harvard [dot] edu</p>
@@ -60,6 +60,18 @@ title: Home
           <span class="pos-org">MIT</span>
         </a>
       </li>
+    </ul>
+
+    <p class="pos-heading ideas-heading">Myriad ideas I'm currently excited about</p>
+    <ul class="ideas-list">
+      <li><a href="https://arxiv.org/abs/2306.13649" target="_blank" rel="noopener noreferrer">On-policy distillation</a></li>
+      <li><a href="https://arxiv.org/abs/2502.01600" target="_blank" rel="noopener noreferrer">Long-horizon RL</a></li>
+      <li><a href="https://arxiv.org/abs/2407.10362" target="_blank" rel="noopener noreferrer">Bio evals</a></li>
+      <li><a href="https://journals.aps.org/pr/abstract/10.1103/PhysRev.136.B864" target="_blank" rel="noopener noreferrer">Density Functional Theory</a></li>
+      <li><a href="https://arxiv.org/html/2606.14003v1" target="_blank" rel="noopener noreferrer">X-ray Diffraction</a></li>
+      <li><a href="https://www.nature.com/articles/s41467-025-60872-5" target="_blank" rel="noopener noreferrer">mRNA structure</a></li>
+      <li><a href="https://arxiv.org/abs/2604.05181" target="_blank" rel="noopener noreferrer">Diffusion modeling</a></li>
+      <li><a href="https://www.lila.ai/news/a-new-synthesis-for-the-field-of-open-endedness" target="_blank" rel="noopener noreferrer">Continual learning</a></li>
     </ul>
   </aside>
 
