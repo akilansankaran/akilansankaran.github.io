@@ -33,5 +33,35 @@ title: Home
 
   </div>
 
+  <aside class="hero-positions">
+    <p class="pos-heading">Positions</p>
+    <ul class="pos-list">
+      <li>
+        <a href="/lila">
+          <span class="pos-role">Member of Technical Staff</span>
+          <span class="pos-org">Lila Sciences, AI Research</span>
+        </a>
+      </li>
+      <li>
+        <a href="/mir">
+          <span class="pos-role">Materials Intelligence Research Group</span>
+          <span class="pos-org">Harvard University</span>
+        </a>
+      </li>
+      <li>
+        <a href="/recombination">
+          <span class="pos-role">Computational Materials Department</span>
+          <span class="pos-org">Sandia National Laboratories</span>
+        </a>
+      </li>
+      <li>
+        <a href="/hydrodynamics">
+          <span class="pos-role">Applied Mathematics Laboratory</span>
+          <span class="pos-org">MIT</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
+
 
 </div>
