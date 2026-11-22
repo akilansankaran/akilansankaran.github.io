@@ -1604,7 +1604,6 @@ main.container:has(.hero-with-nav) {
 .pos-heading {
   font-family: var(--font-serif);
   font-size: 0.875rem;
-  font-style: italic;
   color: var(--text-muted);
   margin: 0 0 1rem;
 }
@@ -1642,7 +1641,6 @@ main.container:has(.hero-with-nav) {
   display: block;
   margin-top: 0.1rem;
   font-size: 0.75rem;
-  font-style: italic;
   color: var(--text-muted);
 }
 
@@ -1702,7 +1700,6 @@ main.container:has(.hero-with-nav) {
   display: block;
   margin-top: 0.15rem;
   font-size: 0.8125rem;
-  font-style: italic;
   color: var(--text-muted);
   line-height: 1.4;
 }
