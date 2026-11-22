@@ -1620,22 +1620,34 @@ main.container:has(.hero-with-nav) {
 }
 
 .ideas-list li {
-  margin: 0 0 0.45rem;
-  font-size: 0.875rem;
-  line-height: 1.4;
+  margin: 0 0 0.85rem;
 }
 
 .ideas-list a,
 .ideas-list a:visited {
+  display: block;
   color: var(--text);
   text-decoration: none;
-  border-bottom: 1px solid var(--border);
-  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.ideas-list a:hover {
+.paper-title {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.paper-meta {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.ideas-list a:hover .paper-title {
   color: var(--link);
-  border-bottom-color: var(--link);
 }
 
 .pos-list {

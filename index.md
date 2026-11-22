@@ -62,16 +62,56 @@ title: Home
       </li>
     </ul>
 
-    <p class="pos-heading ideas-heading">Myriad ideas I'm currently excited about</p>
+    <p class="pos-heading ideas-heading">Papers I've enjoyed recently.</p>
     <ul class="ideas-list">
-      <li><a href="https://arxiv.org/abs/2306.13649" target="_blank" rel="noopener noreferrer">On-policy distillation</a></li>
-      <li><a href="https://arxiv.org/abs/2502.01600" target="_blank" rel="noopener noreferrer">Long-horizon RL</a></li>
-      <li><a href="https://arxiv.org/abs/2407.10362" target="_blank" rel="noopener noreferrer">Bio evals</a></li>
-      <li><a href="https://journals.aps.org/pr/abstract/10.1103/PhysRev.136.B864" target="_blank" rel="noopener noreferrer">Density Functional Theory</a></li>
-      <li><a href="https://arxiv.org/html/2606.14003v1" target="_blank" rel="noopener noreferrer">X-ray Diffraction</a></li>
-      <li><a href="https://www.nature.com/articles/s41467-025-60872-5" target="_blank" rel="noopener noreferrer">mRNA structure</a></li>
-      <li><a href="https://arxiv.org/abs/2604.05181" target="_blank" rel="noopener noreferrer">Diffusion modeling</a></li>
-      <li><a href="https://www.lila.ai/news/a-new-synthesis-for-the-field-of-open-endedness" target="_blank" rel="noopener noreferrer">Continual learning</a></li>
+      <li>
+        <a href="https://arxiv.org/abs/2306.13649" target="_blank" rel="noopener noreferrer">
+          <span class="paper-title">On-Policy Distillation of Language Models: Learning from Self-Generated Mistakes</span>
+          <span class="paper-meta">Agarwal et al., 2023</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://arxiv.org/abs/2502.01600" target="_blank" rel="noopener noreferrer">
+          <span class="paper-title">Reinforcement Learning for Long-Horizon Interactive LLM Agents</span>
+          <span class="paper-meta">Chen et al., 2025</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://arxiv.org/abs/2407.10362" target="_blank" rel="noopener noreferrer">
+          <span class="paper-title">LAB-Bench: Measuring Capabilities of Language Models for Biology Research</span>
+          <span class="paper-meta">Laurent et al., 2024</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://journals.aps.org/pr/abstract/10.1103/PhysRev.136.B864" target="_blank" rel="noopener noreferrer">
+          <span class="paper-title">Inhomogeneous Electron Gas</span>
+          <span class="paper-meta">Hohenberg &amp; Kohn, 1964</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://arxiv.org/html/2606.14003v1" target="_blank" rel="noopener noreferrer">
+          <span class="paper-title">XRDiff: Crystal Structure Prediction from Powder X-Ray Diffraction Data Using Diffusion Models</span>
+          <span class="paper-meta">Segal et al., 2026</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.nature.com/articles/s41467-025-60872-5" target="_blank" rel="noopener noreferrer">
+          <span class="paper-title">RiNALMo: General-Purpose RNA Language Models Can Generalize Well on Structure Prediction Tasks</span>
+          <span class="paper-meta">Penić et al., 2025</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://arxiv.org/abs/2604.05181" target="_blank" rel="noopener noreferrer">
+          <span class="paper-title">General Multimodal Protein Design Enables DNA-Encoding of Chemistry</span>
+          <span class="paper-meta">Rector-Brooks et al., 2026</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.lila.ai/news/a-new-synthesis-for-the-field-of-open-endedness" target="_blank" rel="noopener noreferrer">
+          <span class="paper-title">A New Synthesis for the Field of Open-Endedness</span>
+          <span class="paper-meta">Lila Sciences</span>
+        </a>
+      </li>
     </ul>
   </aside>
 
