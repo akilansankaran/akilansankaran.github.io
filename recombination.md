@@ -13,7 +13,7 @@ title: Carrier Recombination
 
 <div class="content-container" markdown="1">
 
-While at [Sandia National Laboratories](https://www.sandia.gov/), a Federally Funded Research and Development Corporation (FFRDC) under the U.S. Department of Energy, I investigated temperature-dependence carrier recombination in semiconductor materials as a member of the computational materials team (Dept. 1800). I am grateful for the supervision of Dr. Normand Modine during this project.
+While at [Sandia National Laboratories](https://www.sandia.gov/), a Federally Funded Research and Development Center (FFRDC) under the U.S. Department of Energy, I investigated temperature-dependent carrier recombination in semiconductor materials as a member of the computational materials team (Dept. 1800). I am grateful for the supervision of Dr. Normand Modine during this project.
 <ul style="list-style-type: square; margin-left: 1.2em;">
   <li>While at Sandia, I developed a first-principles approach for point defect modeling under [seminal theories of electron and hole capture](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.35.1525), allowing for [improvements on Density Functional Theory (DFT) simulations](https://www.sciencedirect.com/science/article/abs/pii/S0010465521001685) of transition probabilities.</li>
   <li>I developed a transition-state model for the relaxation process involved in electron and hole capture, and discussed the effects of anharmonicity and multidimensionality in the governing potentials when informing transition rate calculations.</li>
