@@ -1544,13 +1544,17 @@ main.container > h1:first-child {
 
 /* ===== Announcement banner ===== */
 .announce-banner {
+  --banner-grad: linear-gradient(120deg, #2563eb 0%, #7c3aed 50%, #db2777 100%);
+  --banner-wash: linear-gradient(120deg, rgba(37, 99, 235, 0.05), rgba(124, 58, 237, 0.04) 50%, rgba(219, 39, 119, 0.05));
   display: block;
   margin: 0 0 1.75rem;
   padding: 0.9rem 1.1rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--link);
+  border: 1.5px solid transparent;
   border-radius: var(--radius-sm);
+  background:
+    var(--banner-wash) padding-box,
+    linear-gradient(var(--bg-card), var(--bg-card)) padding-box,
+    var(--banner-grad) border-box;
   box-shadow: var(--shadow-sm);
   color: var(--text);
   font-family: var(--font-serif);
@@ -1560,7 +1564,12 @@ main.container > h1:first-child {
   text-decoration: none;
   opacity: 0;
   animation: heroFadeUp 0.5s ease 0.25s forwards;
-  transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+[data-theme="dark"] .announce-banner {
+  --banner-grad: linear-gradient(120deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%);
+  --banner-wash: linear-gradient(120deg, rgba(96, 165, 250, 0.08), rgba(167, 139, 250, 0.06) 50%, rgba(244, 114, 182, 0.08));
 }
 
 .announce-banner:hover,
@@ -1571,8 +1580,6 @@ main.container > h1:first-child {
 
 .announce-banner:hover {
   box-shadow: var(--shadow-md);
-  border-color: var(--border-hover);
-  border-left-color: var(--link);
   transform: translateY(-1px);
 }
 
