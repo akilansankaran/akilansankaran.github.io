@@ -14,7 +14,7 @@ title: Home
     <p class="git-email">akilansankaran [at] college [dot] harvard [dot] edu</p>
   </div>
 
-  <a href="/rh-viz/" class="announce-banner">Read my recent remarks on Levent Alpöge's Lean formalization of a justification for the Riemann Hypothesis.</a>
+  <a href="/finite_response.pdf" class="announce-banner">Read my recent remarks on Venkatesa Chandrasekaran's claimed reduction from diffeomorphism invariance to a finite-dimensional Hilbert space for causal diamonds.</a>
 
   <p class="hero-bio">I work on long-horizon problems that require those fleeting, discontinuous moments of discovery which have driven researchers across eras of intelligence; currently, this involves the synthesis of <b>computational and mathematical formalism</b> with the <b>applied physical sciences</b>. I'm working on ML research, applied translationally across scientific domains, at <a href="/lila">Lila</a> under Ben Kompa, and I'm thinking about machine-learned exchange-correlation functionals and neural-network potentials at Harvard's <a href="https://mir.g.harvard.edu/">MIR group</a>. I've conducted research efforts on defects and electronic structure at <a href="https://www.sandia.gov/">Sandia National Laboratories</a>, as well as fluid dynamics at the <a href="https://thales.mit.edu/bush/">Bush Lab at MIT</a>.</p>
 
